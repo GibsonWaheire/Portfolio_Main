@@ -1,0 +1,27 @@
+[
+  {
+    "title": "FundiMatch",
+    "description": "A Kenya-based app connecting users to fundis/contractors with Firebase Auth and Tailwind.",
+    "tech": ["React", "Firebase", "Tailwind"],
+    "github": "https://github.com/GibsonWaheire/fundimatch"
+  },
+  {
+    "title": "ProtestWatch App",
+    "description": "A full-stack protest monitoring tool built with React, Express, and PostgreSQL.",
+    "tech": ["React", "Express", "Postgres"],
+    "github": "https://github.com/GibsonWaheire/protestwatch",
+    "live": "https://protest-watch-app.vercel.app/"
+  },
+  {
+    "title": "What-To-Eat Web App",
+    "description": "Kenyan meal quiz suggestion app with localStorage persistence.",
+    "tech": ["HTML", "CSS", "JavaScript"],
+    "github": "https://github.com/GibsonWaheire/whatttoeat"
+  },
+  {
+    "title": "Smart Saving App",
+    "description": "A modern web app for managing and tracking your financial saving goals.",
+    "tech": ["React", "Vite", "Firebase"],
+    "github": "https://github.com/GibsonWaheire/smart-saving-app"
+  }
+] 
