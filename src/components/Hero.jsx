@@ -15,7 +15,7 @@ const Hero = () => {
       <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       
-      {/* Floating Code Elements */}
+      {/* Floating Code Elements - Left to Right Movement */}
       <div className="absolute top-1/4 left-4 text-blue-400/20 text-sm font-mono animate-bounce" style={{ animationDelay: '0.5s' }}>
         &lt;React /&gt;
       </div>
@@ -29,18 +29,74 @@ const Hero = () => {
         npm install
       </div>
       
-      {/* Animated Particles */}
+      {/* Moving Code Lines - Sideways Animation */}
+      <div className="absolute top-1/6 left-0 text-yellow-400/15 text-xs font-mono animate-pulse" style={{ animationDelay: '0.3s' }}>
+        import React from 'react';
+      </div>
+      <div className="absolute top-2/6 right-0 text-pink-400/15 text-xs font-mono animate-pulse" style={{ animationDelay: '0.8s' }}>
+        export default App;
+      </div>
+      <div className="absolute bottom-1/6 left-0 text-orange-400/15 text-xs font-mono animate-pulse" style={{ animationDelay: '1.2s' }}>
+        useState, useEffect
+      </div>
+      <div className="absolute bottom-2/6 right-0 text-indigo-400/15 text-xs font-mono animate-pulse" style={{ animationDelay: '1.7s' }}>
+        async function
+      </div>
+      
+      {/* Floating Icons - Up and Down Movement */}
+      <div className="absolute top-1/5 left-1/6 text-blue-400/25 text-lg animate-bounce" style={{ animationDelay: '0.4s' }}>
+        ⚛️
+      </div>
+      <div className="absolute top-3/5 right-1/6 text-purple-400/25 text-lg animate-bounce" style={{ animationDelay: '1.1s' }}>
+        🔥
+      </div>
+      <div className="absolute bottom-1/5 left-1/3 text-cyan-400/25 text-lg animate-bounce" style={{ animationDelay: '1.8s' }}>
+        ⚡
+      </div>
+      <div className="absolute bottom-3/5 right-1/3 text-green-400/25 text-lg animate-bounce" style={{ animationDelay: '2.3s' }}>
+        🚀
+      </div>
+      
+      {/* Animated Particles - More Dynamic */}
       <div className="absolute top-1/2 left-1/4 w-2 h-2 bg-blue-400/30 rounded-full animate-ping"></div>
       <div className="absolute top-1/3 right-1/4 w-1 h-1 bg-purple-400/40 rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
       <div className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-cyan-400/35 rounded-full animate-ping" style={{ animationDelay: '2s' }}></div>
       <div className="absolute top-2/3 right-1/3 w-1 h-1 bg-green-400/40 rounded-full animate-ping" style={{ animationDelay: '3s' }}></div>
+      <div className="absolute top-1/4 left-1/2 w-1 h-1 bg-yellow-400/35 rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
+      <div className="absolute bottom-1/4 right-1/2 w-1.5 h-1.5 bg-pink-400/30 rounded-full animate-ping" style={{ animationDelay: '1.5s' }}></div>
       
-      {/* Floating Brackets */}
+      {/* Floating Brackets and Symbols */}
       <div className="absolute top-1/4 right-1/4 text-blue-400/15 text-2xl font-mono animate-pulse">
         {`{`}
       </div>
       <div className="absolute bottom-1/4 left-1/4 text-purple-400/15 text-2xl font-mono animate-pulse" style={{ animationDelay: '1s' }}>
         {`}`}
+      </div>
+      <div className="absolute top-1/2 left-1/6 text-cyan-400/20 text-xl font-mono animate-pulse" style={{ animationDelay: '0.7s' }}>
+        &lt;/&gt;
+      </div>
+      <div className="absolute bottom-1/2 right-1/6 text-green-400/20 text-xl font-mono animate-pulse" style={{ animationDelay: '1.3s' }}>
+        =&gt;
+      </div>
+      
+      {/* Moving Dots - Sideways Animation */}
+      <div className="absolute top-1/3 left-0 w-1 h-1 bg-blue-400/50 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+      <div className="absolute top-2/3 right-0 w-1 h-1 bg-purple-400/50 rounded-full animate-pulse" style={{ animationDelay: '0.9s' }}></div>
+      <div className="absolute bottom-1/3 left-0 w-1 h-1 bg-cyan-400/50 rounded-full animate-pulse" style={{ animationDelay: '1.6s' }}></div>
+      <div className="absolute bottom-2/3 right-0 w-1 h-1 bg-green-400/50 rounded-full animate-pulse" style={{ animationDelay: '2.1s' }}></div>
+      
+      {/* Floating Numbers - Development Related */}
+      <div className="absolute top-1/6 right-1/4 text-yellow-400/20 text-sm font-mono animate-bounce" style={{ animationDelay: '0.6s' }}>
+        404
+      </div>
+      <div className="absolute bottom-1/6 left-1/4 text-pink-400/20 text-sm font-mono animate-bounce" style={{ animationDelay: '1.4s' }}>
+        200
+      </div>
+      <div className="absolute top-4/6 right-1/3 text-orange-400/20 text-sm font-mono animate-bounce" style={{ animationDelay: '2.0s' }}>
+        git
+      </div>
+      <div className="absolute bottom-4/6 left-1/3 text-indigo-400/20 text-sm font-mono animate-bounce" style={{ animationDelay: '2.6s' }}>
+        dev
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
