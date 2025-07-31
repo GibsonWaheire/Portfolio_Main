@@ -15,6 +15,34 @@ const Hero = () => {
       <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       
+      {/* Floating Code Elements */}
+      <div className="absolute top-1/4 left-4 text-blue-400/20 text-sm font-mono animate-bounce" style={{ animationDelay: '0.5s' }}>
+        &lt;React /&gt;
+      </div>
+      <div className="absolute top-1/3 right-8 text-purple-400/20 text-sm font-mono animate-bounce" style={{ animationDelay: '1s' }}>
+        function() {`{`}
+      </div>
+      <div className="absolute bottom-1/3 left-8 text-cyan-400/20 text-sm font-mono animate-bounce" style={{ animationDelay: '1.5s' }}>
+        const dev = "awesome";
+      </div>
+      <div className="absolute bottom-1/4 right-4 text-green-400/20 text-sm font-mono animate-bounce" style={{ animationDelay: '2.5s' }}>
+        npm install
+      </div>
+      
+      {/* Animated Particles */}
+      <div className="absolute top-1/2 left-1/4 w-2 h-2 bg-blue-400/30 rounded-full animate-ping"></div>
+      <div className="absolute top-1/3 right-1/4 w-1 h-1 bg-purple-400/40 rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
+      <div className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-cyan-400/35 rounded-full animate-ping" style={{ animationDelay: '2s' }}></div>
+      <div className="absolute top-2/3 right-1/3 w-1 h-1 bg-green-400/40 rounded-full animate-ping" style={{ animationDelay: '3s' }}></div>
+      
+      {/* Floating Brackets */}
+      <div className="absolute top-1/4 right-1/4 text-blue-400/15 text-2xl font-mono animate-pulse">
+        {`{`}
+      </div>
+      <div className="absolute bottom-1/4 left-1/4 text-purple-400/15 text-2xl font-mono animate-pulse" style={{ animationDelay: '1s' }}>
+        {`}`}
+      </div>
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <div className="animate-fade-in">
           {/* Greeting */}
