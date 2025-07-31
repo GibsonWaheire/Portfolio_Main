@@ -26,7 +26,7 @@ export default function Footer() {
             <Github size={22} />
           </a>
           <a
-            href="https://linkedin.com/in/gibson-waheire"
+            href="https://www.linkedin.com/in/gibson-w-giteru/"
             className="text-gray-400 hover:text-blue-400 transition"
             target="_blank"
             rel="noopener noreferrer"

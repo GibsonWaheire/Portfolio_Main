@@ -37,8 +37,8 @@ const Contact = () => {
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      value: '/in/gibson-waheire',
-      href: 'https://linkedin.com/in/gibson-waheire'
+      value: '/in/gibson-w-giteru',
+      href: 'https://www.linkedin.com/in/gibson-w-giteru/'
     },
     {
       icon: Github,
@@ -121,7 +121,7 @@ const Contact = () => {
                   Send Email
                 </a>
                 <a
-                  href="https://linkedin.com/in/gibson-waheire"
+                  href="https://www.linkedin.com/in/gibson-w-giteru/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full p-3 text-center rounded-lg bg-purple-500/10 hover:bg-purple-500/20 text-purple-400 border border-purple-500/20 transition-all duration-300 transform hover:scale-105"

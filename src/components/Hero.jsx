@@ -97,7 +97,7 @@ const Hero = () => {
             </a>
             
             <a
-              href="https://linkedin.com/in/gibson-waheire"
+              href="https://www.linkedin.com/in/gibson-w-giteru/"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-full bg-gray-800/50 hover:bg-blue-500/20 text-gray-400 hover:text-blue-400 transition-all duration-300 transform hover:scale-110 hover:rotate-12"
