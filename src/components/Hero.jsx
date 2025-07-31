@@ -11,10 +11,10 @@ const Hero = () => {
   };
 
   return (
-    <section
-      id="home"
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 relative overflow-hidden"
-    >
+         <section
+       id="home"
+       className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 relative overflow-hidden px-4"
+     >
       {/* Background decorative elements */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
       <div
@@ -191,76 +191,87 @@ const Hero = () => {
       </div>
 
              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-         <div className="flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-50">
+         <div className="flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-20">
            {/* Profile Picture - Left Side */}
            <div className="flex-shrink-0">
-             <div className="relative">
-               <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-blue-400/30 shadow-2xl">
+             <div className="relative group">
+               <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-blue-400/40 shadow-2xl group-hover:shadow-blue-500/25 transition-all duration-500">
                  <img
                    src={profileImage}
                    alt="Gibson Waheire - Software Developer"
-                   className="w-full h-full object-cover object-left"
+                   className="w-full h-full object-cover object-left group-hover:scale-110 transition-transform duration-700"
                  />
                </div>
-               {/* Animated border glow */}
-               <div className="absolute inset-0 rounded-full border-4 border-blue-400/20 animate-pulse"></div>
+               {/* Enhanced animated border glow */}
+               <div className="absolute inset-0 rounded-full border-4 border-blue-400/30 animate-pulse"></div>
+               <div className="absolute inset-0 rounded-full border-2 border-purple-400/20 animate-ping" style={{ animationDelay: '1s' }}></div>
+               {/* Subtle background glow */}
+               <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
              </div>
            </div>
 
            {/* Content - Right Side */}
-           <div className="flex-1 text-center lg:text-left">
-             {/* Greeting */}
-             <p className="text-lg text-blue-400 mb-4 font-medium">
-               Hi there! I'm
-             </p>
+           <div className="flex-1 text-center">
+             {/* Enhanced Greeting */}
+             <div className="mb-6">
+               <p className="text-lg text-blue-400 mb-2 font-medium tracking-wide">
+                 Hi there! I'm
+               </p>
+                                <div className="w-16 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mx-auto"></div>
+             </div>
 
-             {/* Name */}
-             <h1 className="text-5xl md:text-7xl font-bold mb-6">
-               <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+             {/* Enhanced Name */}
+             <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+               <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
                  Gibson Waheire
                </span>
              </h1>
 
-             {/* Tagline */}
-             <h2 className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl leading-relaxed">
-               Software Developer
+             {/* Enhanced Tagline */}
+             <h2 className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl leading-relaxed font-medium">
+               <span className="text-blue-400">Software Developer</span>
+               <span className="text-gray-500 mx-2">•</span>
+               <span className="text-purple-400">React Enthusiast</span>
+               <span className="text-gray-500 mx-2">•</span>
+               <span className="text-cyan-400">Problem Solver</span>
              </h2>
 
-             {/* Description */}
+             {/* Enhanced Description */}
              <p className="text-lg text-gray-400 mb-12 max-w-2xl leading-relaxed">
                I craft beautiful, responsive web applications using modern
                technologies. Passionate about creating user-friendly experiences
                that make a difference.
              </p>
 
-             {/* CTA Buttons */}
-             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-12">
+             {/* Enhanced CTA Buttons */}
+             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
                <button
                  onClick={() => scrollToSection("projects")}
-                 className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg font-semibold flex items-center space-x-2 group hover:opacity-90 transition-all duration-300 transform hover:scale-105"
+                 className="px-8 py-4 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 text-white rounded-xl font-semibold flex items-center space-x-2 group hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-105 relative overflow-hidden"
                >
-                 <span>View My Projects</span>
+                 <span className="relative z-10">View My Projects</span>
                  <ArrowRight
                    size={20}
-                   className="group-hover:translate-x-1 transition-transform"
+                   className="relative z-10 group-hover:translate-x-1 transition-transform"
                  />
+                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                </button>
 
                <button
                  onClick={() => scrollToSection("contact")}
-                 className="px-8 py-4 rounded-lg font-semibold border border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white transition-all duration-300 transform hover:scale-105"
+                 className="px-8 py-4 rounded-xl font-semibold border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white hover:shadow-lg hover:shadow-blue-400/25 transition-all duration-300 transform hover:scale-105"
                >
                  Contact Me
                </button>
              </div>
 
-             {/* Social Links */}
-             <div className="flex justify-center lg:justify-start space-x-6">
+             {/* Enhanced Social Links */}
+             <div className="flex justify-center space-x-6">
                <a
                  href="https://github.com/GibsonWaheire"
                  target="_blank"
                  rel="noopener noreferrer"
-                 className="p-3 rounded-full bg-gray-800/50 hover:bg-blue-500/20 text-gray-400 hover:text-blue-400 transition-all duration-300 transform hover:scale-110 hover:rotate-12"
+                 className="p-3 rounded-full bg-gray-800/50 hover:bg-blue-500/20 text-gray-400 hover:text-blue-400 transition-all duration-300 transform hover:scale-110 hover:rotate-12 hover:shadow-lg hover:shadow-blue-500/25"
                  aria-label="GitHub"
                >
                  <Github size={24} />
@@ -270,7 +281,7 @@ const Hero = () => {
                  href="https://www.linkedin.com/in/gibson-w-giteru/"
                  target="_blank"
                  rel="noopener noreferrer"
-                 className="p-3 rounded-full bg-gray-800/50 hover:bg-blue-500/20 text-gray-400 hover:text-blue-400 transition-all duration-300 transform hover:scale-110 hover:rotate-12"
+                 className="p-3 rounded-full bg-gray-800/50 hover:bg-purple-500/20 text-gray-400 hover:text-purple-400 transition-all duration-300 transform hover:scale-110 hover:rotate-12 hover:shadow-lg hover:shadow-purple-500/25"
                  aria-label="LinkedIn"
                >
                  <Linkedin size={24} />
@@ -278,7 +289,7 @@ const Hero = () => {
 
                <a
                  href="mailto:gibsonwaheire@gmail.com"
-                 className="p-3 rounded-full bg-gray-800/50 hover:bg-blue-500/20 text-gray-400 hover:text-blue-400 transition-all duration-300 transform hover:scale-110 hover:rotate-12"
+                 className="p-3 rounded-full bg-gray-800/50 hover:bg-cyan-500/20 text-gray-400 hover:text-cyan-400 transition-all duration-300 transform hover:scale-110 hover:rotate-12 hover:shadow-lg hover:shadow-cyan-500/25"
                  aria-label="Email"
                >
                  <Mail size={24} />
