@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
+import profileImage from '../assets/WhatsApp Image 2025-07-31 at 6.43.47 PM.jpeg';
 
 const Hero = () => {
   const scrollToSection = (sectionId) => {
@@ -10,97 +11,202 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 relative overflow-hidden">
+    <section
+      id="home"
+      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 relative overflow-hidden"
+    >
       {/* Background decorative elements */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
-      
+      <div
+        className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"
+        style={{ animationDelay: "2s" }}
+      ></div>
+
       {/* Floating Code Elements - Left to Right Movement */}
-      <div className="absolute top-1/4 left-4 text-blue-400/20 text-sm font-mono animate-bounce" style={{ animationDelay: '0.5s' }}>
+      <div
+        className="absolute top-1/4 left-4 text-blue-400/20 text-sm font-mono animate-bounce"
+        style={{ animationDelay: "0.5s" }}
+      >
         &lt;React /&gt;
       </div>
-      <div className="absolute top-1/3 right-8 text-purple-400/20 text-sm font-mono animate-bounce" style={{ animationDelay: '1s' }}>
+      <div
+        className="absolute top-1/3 right-8 text-purple-400/20 text-sm font-mono animate-bounce"
+        style={{ animationDelay: "1s" }}
+      >
         function() {`{`}
       </div>
-      <div className="absolute bottom-1/3 left-8 text-cyan-400/20 text-sm font-mono animate-bounce" style={{ animationDelay: '1.5s' }}>
+      <div
+        className="absolute bottom-1/3 left-8 text-cyan-400/20 text-sm font-mono animate-bounce"
+        style={{ animationDelay: "1.5s" }}
+      >
         const dev = "awesome";
       </div>
-      <div className="absolute bottom-1/4 right-4 text-green-400/20 text-sm font-mono animate-bounce" style={{ animationDelay: '2.5s' }}>
+      <div
+        className="absolute bottom-1/4 right-4 text-green-400/20 text-sm font-mono animate-bounce"
+        style={{ animationDelay: "2.5s" }}
+      >
         npm install
       </div>
-      
+
       {/* Moving Code Lines - Sideways Animation */}
-      <div className="absolute top-1/6 left-0 text-yellow-400/15 text-xs font-mono animate-pulse" style={{ animationDelay: '0.3s' }}>
+      <div
+        className="absolute top-1/6 left-0 text-yellow-400/15 text-xs font-mono animate-pulse"
+        style={{ animationDelay: "0.3s" }}
+      >
         import React from 'react';
       </div>
-      <div className="absolute top-2/6 right-0 text-pink-400/15 text-xs font-mono animate-pulse" style={{ animationDelay: '0.8s' }}>
+      <div
+        className="absolute top-2/6 right-0 text-pink-400/15 text-xs font-mono animate-pulse"
+        style={{ animationDelay: "0.8s" }}
+      >
         export default App;
       </div>
-      <div className="absolute bottom-1/6 left-0 text-orange-400/15 text-xs font-mono animate-pulse" style={{ animationDelay: '1.2s' }}>
+      <div
+        className="absolute bottom-1/6 left-0 text-orange-400/15 text-xs font-mono animate-pulse"
+        style={{ animationDelay: "1.2s" }}
+      >
         useState, useEffect
       </div>
-      <div className="absolute bottom-2/6 right-0 text-indigo-400/15 text-xs font-mono animate-pulse" style={{ animationDelay: '1.7s' }}>
+      <div
+        className="absolute bottom-2/6 right-0 text-indigo-400/15 text-xs font-mono animate-pulse"
+        style={{ animationDelay: "1.7s" }}
+      >
         async function
       </div>
-      
+
       {/* Floating Icons - Up and Down Movement */}
-      <div className="absolute top-1/5 left-1/6 text-blue-400/25 text-lg animate-bounce" style={{ animationDelay: '0.4s' }}>
+      <div
+        className="absolute top-1/5 left-1/6 text-blue-400/25 text-lg animate-bounce"
+        style={{ animationDelay: "0.4s" }}
+      >
         ⚛️
       </div>
-      <div className="absolute top-3/5 right-1/6 text-purple-400/25 text-lg animate-bounce" style={{ animationDelay: '1.1s' }}>
+      <div
+        className="absolute top-3/5 right-1/6 text-purple-400/25 text-lg animate-bounce"
+        style={{ animationDelay: "1.1s" }}
+      >
         🔥
       </div>
-      <div className="absolute bottom-1/5 left-1/3 text-cyan-400/25 text-lg animate-bounce" style={{ animationDelay: '1.8s' }}>
+      <div
+        className="absolute bottom-1/5 left-1/3 text-cyan-400/25 text-lg animate-bounce"
+        style={{ animationDelay: "1.8s" }}
+      >
         ⚡
       </div>
-      <div className="absolute bottom-3/5 right-1/3 text-green-400/25 text-lg animate-bounce" style={{ animationDelay: '2.3s' }}>
+      <div
+        className="absolute bottom-3/5 right-1/3 text-green-400/25 text-lg animate-bounce"
+        style={{ animationDelay: "2.3s" }}
+      >
         🚀
       </div>
-      
+
       {/* Animated Particles - More Dynamic */}
       <div className="absolute top-1/2 left-1/4 w-2 h-2 bg-blue-400/30 rounded-full animate-ping"></div>
-      <div className="absolute top-1/3 right-1/4 w-1 h-1 bg-purple-400/40 rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
-      <div className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-cyan-400/35 rounded-full animate-ping" style={{ animationDelay: '2s' }}></div>
-      <div className="absolute top-2/3 right-1/3 w-1 h-1 bg-green-400/40 rounded-full animate-ping" style={{ animationDelay: '3s' }}></div>
-      <div className="absolute top-1/4 left-1/2 w-1 h-1 bg-yellow-400/35 rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
-      <div className="absolute bottom-1/4 right-1/2 w-1.5 h-1.5 bg-pink-400/30 rounded-full animate-ping" style={{ animationDelay: '1.5s' }}></div>
-      
+      <div
+        className="absolute top-1/3 right-1/4 w-1 h-1 bg-purple-400/40 rounded-full animate-ping"
+        style={{ animationDelay: "1s" }}
+      ></div>
+      <div
+        className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-cyan-400/35 rounded-full animate-ping"
+        style={{ animationDelay: "2s" }}
+      ></div>
+      <div
+        className="absolute top-2/3 right-1/3 w-1 h-1 bg-green-400/40 rounded-full animate-ping"
+        style={{ animationDelay: "3s" }}
+      ></div>
+      <div
+        className="absolute top-1/4 left-1/2 w-1 h-1 bg-yellow-400/35 rounded-full animate-ping"
+        style={{ animationDelay: "0.5s" }}
+      ></div>
+      <div
+        className="absolute bottom-1/4 right-1/2 w-1.5 h-1.5 bg-pink-400/30 rounded-full animate-ping"
+        style={{ animationDelay: "1.5s" }}
+      ></div>
+
       {/* Floating Brackets and Symbols */}
       <div className="absolute top-1/4 right-1/4 text-blue-400/15 text-2xl font-mono animate-pulse">
         {`{`}
       </div>
-      <div className="absolute bottom-1/4 left-1/4 text-purple-400/15 text-2xl font-mono animate-pulse" style={{ animationDelay: '1s' }}>
+      <div
+        className="absolute bottom-1/4 left-1/4 text-purple-400/15 text-2xl font-mono animate-pulse"
+        style={{ animationDelay: "1s" }}
+      >
         {`}`}
       </div>
-      <div className="absolute top-1/2 left-1/6 text-cyan-400/20 text-xl font-mono animate-pulse" style={{ animationDelay: '0.7s' }}>
+      <div
+        className="absolute top-1/2 left-1/6 text-cyan-400/20 text-xl font-mono animate-pulse"
+        style={{ animationDelay: "0.7s" }}
+      >
         &lt;/&gt;
       </div>
-      <div className="absolute bottom-1/2 right-1/6 text-green-400/20 text-xl font-mono animate-pulse" style={{ animationDelay: '1.3s' }}>
+      <div
+        className="absolute bottom-1/2 right-1/6 text-green-400/20 text-xl font-mono animate-pulse"
+        style={{ animationDelay: "1.3s" }}
+      >
         =&gt;
       </div>
-      
+
       {/* Moving Dots - Sideways Animation */}
-      <div className="absolute top-1/3 left-0 w-1 h-1 bg-blue-400/50 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-      <div className="absolute top-2/3 right-0 w-1 h-1 bg-purple-400/50 rounded-full animate-pulse" style={{ animationDelay: '0.9s' }}></div>
-      <div className="absolute bottom-1/3 left-0 w-1 h-1 bg-cyan-400/50 rounded-full animate-pulse" style={{ animationDelay: '1.6s' }}></div>
-      <div className="absolute bottom-2/3 right-0 w-1 h-1 bg-green-400/50 rounded-full animate-pulse" style={{ animationDelay: '2.1s' }}></div>
-      
+      <div
+        className="absolute top-1/3 left-0 w-1 h-1 bg-blue-400/50 rounded-full animate-pulse"
+        style={{ animationDelay: "0.2s" }}
+      ></div>
+      <div
+        className="absolute top-2/3 right-0 w-1 h-1 bg-purple-400/50 rounded-full animate-pulse"
+        style={{ animationDelay: "0.9s" }}
+      ></div>
+      <div
+        className="absolute bottom-1/3 left-0 w-1 h-1 bg-cyan-400/50 rounded-full animate-pulse"
+        style={{ animationDelay: "1.6s" }}
+      ></div>
+      <div
+        className="absolute bottom-2/3 right-0 w-1 h-1 bg-green-400/50 rounded-full animate-pulse"
+        style={{ animationDelay: "2.1s" }}
+      ></div>
+
       {/* Floating Numbers - Development Related */}
-      <div className="absolute top-1/6 right-1/4 text-yellow-400/20 text-sm font-mono animate-bounce" style={{ animationDelay: '0.6s' }}>
+      <div
+        className="absolute top-1/6 right-1/4 text-yellow-400/20 text-sm font-mono animate-bounce"
+        style={{ animationDelay: "0.6s" }}
+      >
         404
       </div>
-      <div className="absolute bottom-1/6 left-1/4 text-pink-400/20 text-sm font-mono animate-bounce" style={{ animationDelay: '1.4s' }}>
+      <div
+        className="absolute bottom-1/6 left-1/4 text-pink-400/20 text-sm font-mono animate-bounce"
+        style={{ animationDelay: "1.4s" }}
+      >
         200
       </div>
-      <div className="absolute top-4/6 right-1/3 text-orange-400/20 text-sm font-mono animate-bounce" style={{ animationDelay: '2.0s' }}>
+      <div
+        className="absolute top-4/6 right-1/3 text-orange-400/20 text-sm font-mono animate-bounce"
+        style={{ animationDelay: "2.0s" }}
+      >
         git
       </div>
-      <div className="absolute bottom-4/6 left-1/3 text-indigo-400/20 text-sm font-mono animate-bounce" style={{ animationDelay: '2.6s' }}>
+      <div
+        className="absolute bottom-4/6 left-1/3 text-indigo-400/20 text-sm font-mono animate-bounce"
+        style={{ animationDelay: "2.6s" }}
+      >
         dev
       </div>
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <div className="animate-fade-in">
+          {/* Profile Picture */}
+          <div className="mb-8 flex justify-center">
+            <div className="relative">
+              <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-blue-400/30 shadow-2xl">
+                                 <img
+                   src={profileImage}
+                   alt="Gibson Waheire - Software Developer"
+                   className="w-full h-full object-cover"
+                 />
+              </div>
+              {/* Animated border glow */}
+              <div className="absolute inset-0 rounded-full border-4 border-blue-400/20 animate-pulse"></div>
+            </div>
+          </div>
+
           {/* Greeting */}
           <p className="text-lg text-blue-400 mb-4 font-medium">
             Hi there! I'm
@@ -108,7 +214,9 @@ const Hero = () => {
 
           {/* Name */}
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Gibson Waheire</span>
+            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              Gibson Waheire
+            </span>
           </h1>
 
           {/* Tagline */}
@@ -118,22 +226,26 @@ const Hero = () => {
 
           {/* Description */}
           <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
-            I craft beautiful, responsive web applications using modern technologies. 
-            Passionate about creating user-friendly experiences that make a difference.
+            I craft beautiful, responsive web applications using modern
+            technologies. Passionate about creating user-friendly experiences
+            that make a difference.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <button
-              onClick={() => scrollToSection('projects')}
+              onClick={() => scrollToSection("projects")}
               className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg font-semibold flex items-center space-x-2 group hover:opacity-90 transition-all duration-300 transform hover:scale-105"
             >
               <span>View My Projects</span>
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight
+                size={20}
+                className="group-hover:translate-x-1 transition-transform"
+              />
             </button>
-            
+
             <button
-              onClick={() => scrollToSection('contact')}
+              onClick={() => scrollToSection("contact")}
               className="px-8 py-4 rounded-lg font-semibold border border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white transition-all duration-300 transform hover:scale-105"
             >
               Contact Me
@@ -151,7 +263,7 @@ const Hero = () => {
             >
               <Github size={24} />
             </a>
-            
+
             <a
               href="https://www.linkedin.com/in/gibson-w-giteru/"
               target="_blank"
@@ -161,7 +273,7 @@ const Hero = () => {
             >
               <Linkedin size={24} />
             </a>
-            
+
             <a
               href="mailto:gibsonwaheire@gmail.com"
               className="p-3 rounded-full bg-gray-800/50 hover:bg-blue-500/20 text-gray-400 hover:text-blue-400 transition-all duration-300 transform hover:scale-110 hover:rotate-12"
