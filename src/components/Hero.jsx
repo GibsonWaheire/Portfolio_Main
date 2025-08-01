@@ -13,7 +13,7 @@ const Hero = () => {
   return (
          <section
        id="home"
-       className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 relative overflow-hidden px-4"
+       className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 relative overflow-hidden px-4 pt-16 md:pt-0"
      >
       {/* Background decorative elements */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -191,11 +191,11 @@ const Hero = () => {
       </div>
 
              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-         <div className="flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-20">
+         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-16 lg:gap-20">
            {/* Profile Picture - Left Side */}
-           <div className="flex-shrink-0">
+           <div className="flex-shrink-0 order-2 lg:order-1">
              <div className="relative group">
-               <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-blue-400/40 shadow-2xl group-hover:shadow-blue-500/25 transition-all duration-500">
+               <div className="w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-blue-400/40 shadow-2xl group-hover:shadow-blue-500/25 transition-all duration-500">
                  <img
                    src={profileImage}
                    alt="Gibson Waheire - Software Developer"
@@ -211,24 +211,24 @@ const Hero = () => {
            </div>
 
            {/* Content - Right Side */}
-           <div className="flex-1 text-center">
+           <div className="flex-1 text-center order-1 lg:order-2">
              {/* Enhanced Greeting */}
-             <div className="mb-6">
-               <p className="text-lg text-blue-400 mb-2 font-medium tracking-wide">
+             <div className="mb-4 md:mb-6">
+               <p className="text-base md:text-lg text-blue-400 mb-2 font-medium tracking-wide">
                  Hi there! I'm
                </p>
-                                <div className="w-16 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mx-auto"></div>
+                                <div className="w-12 md:w-16 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mx-auto"></div>
              </div>
 
              {/* Enhanced Name */}
-             <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 md:mb-6 tracking-tight">
                <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
                  Gibson Waheire
                </span>
              </h1>
 
              {/* Enhanced Tagline */}
-             <h2 className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl leading-relaxed font-medium">
+             <h2 className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-6 md:mb-8 max-w-3xl leading-relaxed font-medium">
                <span className="text-blue-400">Software Developer</span>
                <span className="text-gray-500 mx-2">•</span>
                <span className="text-purple-400">React Enthusiast</span>
@@ -237,21 +237,21 @@ const Hero = () => {
              </h2>
 
              {/* Enhanced Description */}
-             <p className="text-lg text-gray-400 mb-12 max-w-2xl leading-relaxed">
+             <p className="text-base md:text-lg text-gray-400 mb-8 md:mb-12 max-w-2xl leading-relaxed">
                I craft beautiful, responsive web applications using modern
                technologies. Passionate about creating user-friendly experiences
                that make a difference.
              </p>
 
              {/* Enhanced CTA Buttons */}
-             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8 md:mb-12">
                <button
                  onClick={() => scrollToSection("projects")}
-                 className="px-8 py-4 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 text-white rounded-xl font-semibold flex items-center space-x-2 group hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-105 relative overflow-hidden"
+                 className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 text-white rounded-xl font-semibold flex items-center justify-center space-x-2 group hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-105 relative overflow-hidden"
                >
                  <span className="relative z-10">View My Projects</span>
                  <ArrowRight
-                   size={20}
+                   size={18}
                    className="relative z-10 group-hover:translate-x-1 transition-transform"
                  />
                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -259,40 +259,40 @@ const Hero = () => {
 
                <button
                  onClick={() => scrollToSection("contact")}
-                 className="px-8 py-4 rounded-xl font-semibold border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white hover:shadow-lg hover:shadow-blue-400/25 transition-all duration-300 transform hover:scale-105"
+                 className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 rounded-xl font-semibold border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white hover:shadow-lg hover:shadow-blue-400/25 transition-all duration-300 transform hover:scale-105"
                >
                  Contact Me
                </button>
              </div>
 
              {/* Enhanced Social Links */}
-             <div className="flex justify-center space-x-6">
+             <div className="flex justify-center space-x-4 md:space-x-6">
                <a
                  href="https://github.com/GibsonWaheire"
                  target="_blank"
                  rel="noopener noreferrer"
-                 className="p-3 rounded-full bg-gray-800/50 hover:bg-blue-500/20 text-gray-400 hover:text-blue-400 transition-all duration-300 transform hover:scale-110 hover:rotate-12 hover:shadow-lg hover:shadow-blue-500/25"
+                 className="p-2 md:p-3 rounded-full bg-gray-800/50 hover:bg-blue-500/20 text-gray-400 hover:text-blue-400 transition-all duration-300 transform hover:scale-110 hover:rotate-12 hover:shadow-lg hover:shadow-blue-500/25"
                  aria-label="GitHub"
                >
-                 <Github size={24} />
+                 <Github size={20} className="md:w-6 md:h-6" />
                </a>
 
                <a
                  href="https://www.linkedin.com/in/gibson-w-giteru/"
                  target="_blank"
                  rel="noopener noreferrer"
-                 className="p-3 rounded-full bg-gray-800/50 hover:bg-purple-500/20 text-gray-400 hover:text-purple-400 transition-all duration-300 transform hover:scale-110 hover:rotate-12 hover:shadow-lg hover:shadow-purple-500/25"
+                 className="p-2 md:p-3 rounded-full bg-gray-800/50 hover:bg-purple-500/20 text-gray-400 hover:text-purple-400 transition-all duration-300 transform hover:scale-110 hover:rotate-12 hover:shadow-lg hover:shadow-purple-500/25"
                  aria-label="LinkedIn"
                >
-                 <Linkedin size={24} />
+                 <Linkedin size={20} className="md:w-6 md:h-6" />
                </a>
 
                <a
                  href="mailto:gibsonwaheire@gmail.com"
-                 className="p-3 rounded-full bg-gray-800/50 hover:bg-cyan-500/20 text-gray-400 hover:text-cyan-400 transition-all duration-300 transform hover:scale-110 hover:rotate-12 hover:shadow-lg hover:shadow-cyan-500/25"
+                 className="p-2 md:p-3 rounded-full bg-gray-800/50 hover:bg-cyan-500/20 text-gray-400 hover:text-cyan-400 transition-all duration-300 transform hover:scale-110 hover:rotate-12 hover:shadow-lg hover:shadow-cyan-500/25"
                  aria-label="Email"
                >
-                 <Mail size={24} />
+                 <Mail size={20} className="md:w-6 md:h-6" />
                </a>
              </div>
            </div>
