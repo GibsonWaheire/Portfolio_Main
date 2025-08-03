@@ -1,8 +1,50 @@
-import React from "react";
-import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { ArrowRight, Github, Linkedin, Mail, Download } from 'lucide-react';
 import profileImage from '../assets/WhatsApp Image 2025-07-31 at 6.43.47 PM.jpeg';
 
 const Hero = () => {
+  const [currentText, setCurrentText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  
+  const texts = [
+    "Software Developer",
+    "React Enthusiast", 
+    "Problem Solver",
+    "Creative Thinker"
+  ];
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      const currentWord = texts[currentIndex];
+      
+      if (isDeleting) {
+        setCurrentText(currentWord.substring(0, currentText.length - 1));
+        if (currentText.length === 0) {
+          setIsDeleting(false);
+          setCurrentIndex((prev) => (prev + 1) % texts.length);
+        }
+      } else {
+        setCurrentText(currentWord.substring(0, currentText.length + 1));
+        if (currentText === currentWord) {
+          setTimeout(() => setIsDeleting(true), 1500);
+        }
+      }
+    }, isDeleting ? 50 : 150);
+
+    return () => clearTimeout(timeout);
+  }, [currentText, currentIndex, isDeleting, texts]);
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -190,6 +232,22 @@ const Hero = () => {
         dev
       </div>
 
+      {/* Mouse Trail Effect */}
+      <div
+        className="fixed w-2 h-2 bg-blue-400/50 rounded-full pointer-events-none z-50 transition-transform duration-100 ease-out"
+        style={{
+          left: mousePosition.x - 4,
+          top: mousePosition.y - 4,
+        }}
+      ></div>
+      <div
+        className="fixed w-1 h-1 bg-purple-400/30 rounded-full pointer-events-none z-50 transition-transform duration-200 ease-out"
+        style={{
+          left: mousePosition.x - 2,
+          top: mousePosition.y - 2,
+        }}
+      ></div>
+
              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-16 lg:gap-20">
            {/* Profile Picture - Left Side */}
@@ -227,21 +285,35 @@ const Hero = () => {
                </span>
              </h1>
 
-             {/* Enhanced Tagline */}
+             {/* Enhanced Tagline with Typing Animation */}
              <h2 className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-6 md:mb-8 max-w-3xl leading-relaxed font-medium">
-               <span className="text-blue-400">Software Developer</span>
-               <span className="text-gray-500 mx-2">•</span>
-               <span className="text-purple-400">React Enthusiast</span>
+               <span className="text-blue-400">I'm a </span>
+               <span className="text-green-400 border-r-2 border-green-400 animate-pulse">
+                 {currentText}
+               </span>
                <span className="text-gray-500 mx-2">•</span>
                <span className="text-cyan-400">Problem Solver</span>
              </h2>
 
              {/* Enhanced Description */}
-             <p className="text-base md:text-lg text-gray-400 mb-8 md:mb-12 max-w-2xl leading-relaxed">
+             <p className="text-base md:text-lg text-gray-400 mb-6 md:mb-8 max-w-2xl leading-relaxed">
                I craft beautiful, responsive web applications using modern
                technologies. Passionate about creating user-friendly experiences
                that make a difference.
              </p>
+
+             {/* Skills Badges */}
+             <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-8 md:mb-12">
+               {['React', 'JavaScript', 'TypeScript', 'Node.js', 'Firebase', 'Tailwind CSS'].map((skill, index) => (
+                 <span
+                   key={skill}
+                   className="px-3 py-1 bg-gray-800/50 text-gray-300 rounded-full text-xs md:text-sm font-medium border border-gray-700 hover:border-blue-400 hover:text-blue-400 transition-all duration-300"
+                   style={{ animationDelay: `${index * 0.1}s` }}
+                 >
+                   {skill}
+                 </span>
+               ))}
+             </div>
 
              {/* Enhanced CTA Buttons */}
              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8 md:mb-12">
@@ -263,6 +335,15 @@ const Hero = () => {
                >
                  Contact Me
                </button>
+
+               <a
+                 href="/path-to-your-cv.pdf"
+                 download
+                 className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 rounded-xl font-semibold border-2 border-green-400 text-green-400 hover:bg-green-400 hover:text-white hover:shadow-lg hover:shadow-green-400/25 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
+               >
+                 <Download size={18} />
+                 <span>Download CV</span>
+               </a>
              </div>
 
              {/* Enhanced Social Links */}
@@ -295,6 +376,22 @@ const Hero = () => {
                  <Mail size={20} className="md:w-6 md:h-6" />
                </a>
              </div>
+
+             {/* Stats Section */}
+             <div className="mt-8 md:mt-12 grid grid-cols-3 gap-4 md:gap-8 max-w-md mx-auto">
+               <div className="text-center">
+                 <div className="text-2xl md:text-3xl font-bold text-blue-400 mb-1">100+</div>
+                 <div className="text-xs md:text-sm text-gray-400">Projects</div>
+               </div>
+               <div className="text-center">
+                 <div className="text-2xl md:text-3xl font-bold text-purple-400 mb-1">2+</div>
+                 <div className="text-xs md:text-sm text-gray-400">Years</div>
+               </div>
+               <div className="text-center">
+                 <div className="text-2xl md:text-3xl font-bold text-cyan-400 mb-1">100%</div>
+                 <div className="text-xs md:text-sm text-gray-400">Satisfaction</div>
+               </div>
+             </div>
            </div>
          </div>
 
@@ -302,6 +399,21 @@ const Hero = () => {
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
           <div className="w-6 h-10 border-2 border-blue-400 rounded-full flex justify-center">
             <div className="w-1 h-3 bg-blue-400 rounded-full mt-2 animate-pulse"></div>
+          </div>
+        </div>
+
+        {/* Floating Action Button */}
+        <div className="fixed bottom-6 right-6 z-50">
+          <div className="relative group">
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="w-14 h-14 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 flex items-center justify-center text-white"
+              aria-label="Quick Contact"
+            >
+              <Mail size={24} />
+            </button>
+            <div className="absolute -top-2 -right-2 w-4 h-4 bg-red-500 rounded-full animate-ping"></div>
+            <div className="absolute -top-2 -right-2 w-4 h-4 bg-red-500 rounded-full"></div>
           </div>
         </div>
       </div>
