@@ -3,7 +3,7 @@
     "title": "FundiMatch",
     "description": "A Kenya-based app connecting users to fundis/contractors with Firebase Auth and Tailwind.",
     "tech": ["React", "Firebase", "Tailwind"],
-    "github": "https://github.com/GibsonWaheire/fundimatch"
+    "github": "https://github.com/GibsonWaheire/Fundi_App"
   },
   {
     "title": "ProtestWatch App",
@@ -16,12 +16,21 @@
     "title": "What-To-Eat Web App",
     "description": "Kenyan meal quiz suggestion app with localStorage persistence.",
     "tech": ["HTML", "CSS", "JavaScript"],
-    "github": "https://github.com/GibsonWaheire/whatttoeat"
+    "github": "https://github.com/GibsonWaheire/what-to-eat-web-app",
+    "live": "https://gibsonwaheire.github.io/what-to-eat-web-app/"
   },
   {
     "title": "Smart Saving App",
     "description": "A modern web app for managing and tracking your financial saving goals.",
     "tech": ["React", "Vite", "Firebase"],
-    "github": "https://github.com/GibsonWaheire/smart-saving-app"
+    "github": "https://github.com/GibsonWaheire/smart-saving-app",
+    "live": "https://smart-plan-ke.netlify.app/"
+  },
+  {
+    "title": "KidsPlay",
+    "description": "Interactive kids learning and play activities web app.",
+    "tech": ["React", "Vite", "Tailwind"],
+    "github": "https://github.com/GibsonWaheire",
+    "live": "https://kidsplay-omega.vercel.app/"
   }
 ] 
