@@ -32,5 +32,12 @@
     "tech": ["React", "Vite", "Tailwind"],
     "github": "https://github.com/GibsonWaheire",
     "live": "https://kidsplay-omega.vercel.app/"
+  },
+  {
+    "title": "E-commerce Mockup (T-Tots Mtumba)",
+    "description": "Modern, responsive kids' fashion e-commerce with smart cart, filtering, and WhatsApp support.",
+    "tech": ["React", "Tailwind", "Vite"],
+    "github": "https://github.com/GibsonWaheire/e-commerce-mockup",
+    "live": "https://e-commerce-mockup.vercel.app/"
   }
 ] 
