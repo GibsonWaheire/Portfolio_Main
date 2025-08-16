@@ -82,7 +82,7 @@ const About = () => {
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
                   <div>
-                    <h4 className="font-semibold text-gray-200 text-sm md:text-base">Frontend Development</h4>
+                    <h4 className="font-semibold text-gray-200 text-sm md:text-base">Full‑stack Development</h4>
                     <p className="text-gray-400 text-xs md:text-sm">Building responsive, interactive user interfaces with React and modern CSS frameworks.</p>
                   </div>
                 </div>

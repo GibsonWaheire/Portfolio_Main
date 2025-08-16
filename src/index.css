@@ -12,18 +12,78 @@ body {
 }
 
 /* Accessible skip link */
-.skip-link {
-  position: absolute;
-  left: -999px;
-  top: 8px;
-  background: #111827;
-  color: #fff;
-  padding: 8px 12px;
-  border-radius: 8px;
+/* Loader */
+.app-loader {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(80% 60% at 50% 0%, rgba(59,130,246,0.12), rgba(0,0,0,0) 60%),
+    linear-gradient(180deg, #0b1220 0%, #0e1424 100%);
   z-index: 9999;
 }
-.skip-link:focus {
-  left: 8px;
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.spinner {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 3px solid rgba(255,255,255,0.15);
+  border-top-color: #6366f1;
+  animation: spin 0.9s linear infinite;
+}
+.loader-text {
+  color: #cbd5e1;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  animation: pulseText 1.2s ease-in-out infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes pulseText {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+@keyframes slideUp {
+  0% { 
+    transform: translateY(40px); 
+    opacity: 0; 
+  }
+  100% { 
+    transform: translateY(0); 
+    opacity: 1; 
+  }
+}
+
+/* Enhanced shadow for main card */
+.shadow-3xl {
+  box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* Custom card shape with curved cut-out bottom-right corner */
+.custom-card-shape {
+  border-radius: 24px;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 140px), calc(100% - 180px) calc(100% - 20px), calc(100% - 220px) 100%, 0 100%);
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .custom-card-shape {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 100px), calc(100% - 120px) calc(100% - 15px), calc(100% - 150px) 100%, 0 100%);
+  }
+}
+
+@media (max-width: 640px) {
+  .custom-card-shape {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 80px), calc(100% - 90px) calc(100% - 10px), calc(100% - 110px) 100%, 0 100%);
+  }
 }
 
 /* Mobile-specific optimizations */

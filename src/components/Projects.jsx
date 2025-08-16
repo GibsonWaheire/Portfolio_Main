@@ -20,8 +20,8 @@ const getTechColor = (tech) => {
 
 const tabs = [
   { key: 'All', label: 'All' },
-  { key: 'Frontend', label: 'Frontend' },
-  { key: 'Full-Stack', label: 'Full‑stack' }
+  { key: 'Full-Stack', label: 'Full‑stack' },
+  { key: 'Frontend', label: 'Frontend' }
 ];
 
 const Projects = () => {

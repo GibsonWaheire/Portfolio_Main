@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { ArrowRight, Github, Linkedin, Mail, Download } from 'lucide-react';
 import profileImage from '../assets/WhatsApp Image 2025-07-31 at 6.43.47 PM.jpeg';
 
@@ -6,14 +6,20 @@ const Hero = () => {
   const [currentText, setCurrentText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isWaiting, setIsWaiting] = useState(false);
+  const [showCursor, setShowCursor] = useState(true);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [audioCtx, setAudioCtx] = useState(null);
+  const [masterGain, setMasterGain] = useState(null);
+  const [clickBuffer, setClickBuffer] = useState(null);
   
-  const texts = [
+  const texts = useMemo(() => [
     "Software Developer",
-    "React Enthusiast", 
-    "Problem Solver",
-    "Creative Thinker"
-  ];
+    "Full‑stack Problem Solver", 
+    "React + TypeScript Expert",
+    "Product‑minded Engineer",
+    "Building scalable solutions"
+  ], []);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -24,26 +30,165 @@ const Hero = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
+  // Cursor blinking effect
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      const currentWord = texts[currentIndex];
-      
-      if (isDeleting) {
-        setCurrentText(currentWord.substring(0, currentText.length - 1));
-        if (currentText.length === 0) {
-          setIsDeleting(false);
-          setCurrentIndex((prev) => (prev + 1) % texts.length);
-        }
+    const cursorInterval = setInterval(() => {
+      setShowCursor(prev => !prev);
+    }, 530);
+    return () => clearInterval(cursorInterval);
+  }, []);
+
+  // Build a short typist click buffer (noise burst through band-pass)
+  const buildClickBuffer = (ctx) => {
+    const duration = 0.05;
+    const sampleRate = ctx.sampleRate;
+    const frameCount = Math.floor(sampleRate * duration);
+    const buffer = ctx.createBuffer(1, frameCount, sampleRate);
+    const data = buffer.getChannelData(0);
+    for (let i = 0; i < frameCount; i++) {
+      const t = i / frameCount;
+      const decay = Math.exp(-18 * t);
+      data[i] = (Math.random() * 2 - 1) * decay;
+    }
+    return buffer;
+  };
+
+  // Try to initialize audio eagerly and resume when possible
+  useEffect(() => {
+    try {
+      if (!audioCtx) {
+        const Ctx = window.AudioContext || window.webkitAudioContext;
+        const ctx = new Ctx();
+        const gain = ctx.createGain();
+        gain.gain.value = 0.18;
+        gain.connect(ctx.destination);
+        setAudioCtx(ctx);
+        setMasterGain(gain);
+        setClickBuffer(buildClickBuffer(ctx));
+        // attempt a resume (may be blocked by autoplay policy)
+        ctx.resume().catch(() => {});
       } else {
-        setCurrentText(currentWord.substring(0, currentText.length + 1));
-        if (currentText === currentWord) {
-          setTimeout(() => setIsDeleting(true), 1500);
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume().catch(() => {});
         }
       }
-    }, isDeleting ? 50 : 150);
+    } catch {
+      // initialization failed; will retry on interaction
+    }
 
-    return () => clearTimeout(timeout);
-  }, [currentText, currentIndex, isDeleting, texts]);
+    const onFirstInteract = () => {
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume().catch(() => {});
+      }
+    };
+    const onVisible = () => {
+      if (document.visibilityState === 'visible' && audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume().catch(() => {});
+      }
+    };
+    window.addEventListener('pointerdown', onFirstInteract, { once: true });
+    window.addEventListener('keydown', onFirstInteract, { once: true });
+    document.addEventListener('visibilitychange', onVisible);
+    window.addEventListener('focus', onVisible);
+    return () => {
+      window.removeEventListener('pointerdown', onFirstInteract);
+      window.removeEventListener('keydown', onFirstInteract);
+      document.removeEventListener('visibilitychange', onVisible);
+      window.removeEventListener('focus', onVisible);
+    };
+  }, [audioCtx]);
+
+  const playTypeSound = useCallback(async (isErase = false) => {
+    if (!audioCtx || !masterGain) return;
+    if (audioCtx.state === 'suspended') {
+      try { await audioCtx.resume(); } catch { return; }
+    }
+    try {
+      if (clickBuffer) {
+        const src = audioCtx.createBufferSource();
+        src.buffer = clickBuffer;
+        const filter = audioCtx.createBiquadFilter();
+        filter.type = 'bandpass';
+        filter.frequency.value = (isErase ? 2300 : 3200) + Math.random() * 500;
+        filter.Q.value = 9;
+        const env = audioCtx.createGain();
+        env.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+        env.gain.exponentialRampToValueAtTime(0.35, audioCtx.currentTime + 0.01);
+        env.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.09);
+        src.connect(filter);
+        filter.connect(env);
+        env.connect(masterGain);
+        src.start();
+      } else {
+        const osc = audioCtx.createOscillator();
+        const env = audioCtx.createGain();
+        const base = isErase ? 650 : 900;
+        const freq = base + Math.random() * 180;
+        osc.type = 'square';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        env.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+        env.gain.exponentialRampToValueAtTime(0.12, audioCtx.currentTime + 0.01);
+        env.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.12);
+        osc.connect(env);
+        env.connect(masterGain);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.14);
+      }
+    } catch {
+      // play failed; ignore
+    }
+  }, [audioCtx, masterGain, clickBuffer]);
+
+  // Enhanced typing effect with realistic timing
+  useEffect(() => {
+    if (isWaiting) return;
+
+    const currentWord = texts[currentIndex];
+    let delay;
+
+    if (isDeleting) {
+      // Faster deletion, slight randomness
+      delay = 40 + Math.random() * 30;
+      
+      setTimeout(() => {
+        setCurrentText(currentWord.substring(0, currentText.length - 1));
+        playTypeSound(true);
+        
+        if (currentText.length <= 1) {
+          setIsDeleting(false);
+          setIsWaiting(true);
+          // Brief pause before starting next word
+          setTimeout(() => {
+            setCurrentIndex((prev) => (prev + 1) % texts.length);
+            setIsWaiting(false);
+          }, 300);
+        }
+      }, delay);
+    } else {
+      // Variable typing speed - slower for punctuation, faster for letters
+      const nextChar = currentWord[currentText.length];
+      const isPunctuation = /[.,!?;:]/.test(nextChar);
+      const isSpace = nextChar === ' ';
+      
+      delay = isPunctuation ? 200 + Math.random() * 100 : 
+              isSpace ? 100 : 
+              80 + Math.random() * 60;
+      
+      setTimeout(() => {
+        setCurrentText(currentWord.substring(0, currentText.length + 1));
+        playTypeSound(false);
+        
+        if (currentText.length + 1 === currentWord.length) {
+          setIsWaiting(true);
+          // Longer pause when word is complete
+          setTimeout(() => {
+            setIsDeleting(true);
+            setIsWaiting(false);
+          }, 2200 + Math.random() * 800);
+        }
+      }, delay);
+    }
+  }, [currentText, currentIndex, isDeleting, isWaiting, texts, playTypeSound]);
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -55,8 +200,14 @@ const Hero = () => {
   return (
          <section
        id="home"
-       className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 relative overflow-hidden px-4 pt-16 md:pt-0"
+       className="min-h-[92vh] flex items-center justify-center relative overflow-hidden px-4 pt-16 md:pt-0"
      >
+      {/* Aurora gradient background */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute -inset-40 bg-[conic-gradient(at_30%_50%,#0ea5e9_10%,#8b5cf6_30%,#06b6d4_50%,#0ea5e9_70%,#1e293b_90%)] opacity-[0.18] blur-3xl animate-[spin_30s_linear_infinite]" />
+        <div className="absolute inset-0 bg-[radial-gradient(80%_60%_at_50%_0%,rgba(59,130,246,0.18),transparent_60%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0b1220]/40 to-[#0e1424]/80" />
+      </div>
       {/* Background decorative elements */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
       <div
@@ -249,65 +400,58 @@ const Hero = () => {
       ></div>
 
              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-16 lg:gap-20">
-           {/* Profile Picture - Left Side */}
-           <div className="flex-shrink-0 order-2 lg:order-1">
-             <div className="relative group">
-               <div className="w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-blue-400/40 shadow-2xl group-hover:shadow-blue-500/25 transition-all duration-500">
-                 <img
-                   src={profileImage}
-                   alt="Gibson Waheire - Software Developer"
-                   className="w-full h-full object-cover object-left group-hover:scale-110 transition-transform duration-700"
-                 />
-               </div>
-               {/* Enhanced animated border glow */}
-               <div className="absolute inset-0 rounded-full border-4 border-blue-400/30 animate-pulse"></div>
-               <div className="absolute inset-0 rounded-full border-2 border-purple-400/20 animate-ping" style={{ animationDelay: '1s' }}></div>
-               {/* Subtle background glow */}
-               <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-             </div>
-           </div>
-
-           {/* Content - Right Side */}
-           <div className="flex-1 text-center order-1 lg:order-2">
+         <div className="flex flex-col items-center justify-center gap-8 lg:gap-12">
+           {/* Main Content Card - Wider with Custom Shape */}
+           <div className="w-full max-w-6xl lg:max-w-7xl relative">
+             {/* Main card background with cut-out corner */}
+             <div className="absolute inset-0 bg-white/10 backdrop-blur-lg border border-white/20 shadow-3xl -z-10 custom-card-shape" />
+             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent -z-10 custom-card-shape" />
+             <div className="px-12 md:px-16 lg:px-20 py-16 md:py-20 text-center flex flex-col justify-center">
              {/* Enhanced Greeting */}
-             <div className="mb-4 md:mb-6">
-               <p className="text-base md:text-lg text-blue-400 mb-2 font-medium tracking-wide">
+             <div className="mb-6 md:mb-8">
+               <p className="text-base md:text-lg text-blue-400 mb-3 font-medium tracking-wide">
                  Hi there! I'm
                </p>
-                                <div className="w-12 md:w-16 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mx-auto"></div>
+               <div className="w-12 md:w-16 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mx-auto"></div>
              </div>
 
-             {/* Enhanced Name */}
-             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 md:mb-6 tracking-tight">
-               <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+             {/* Name & Title */}
+             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 md:mb-6 tracking-tight">
+               <span className="bg-gradient-to-r from-blue-300 via-cyan-300 to-white bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(59,130,246,0.25)]">
                  Gibson Waheire
                </span>
              </h1>
+             <p className="text-sm md:text-base lg:text-lg text-blue-300/80 font-semibold uppercase tracking-[0.2em] mb-6">
+              Software Developer
+            </p>
 
-             {/* Enhanced Tagline with Typing Animation */}
-             <h2 className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-6 md:mb-8 max-w-3xl leading-relaxed font-medium">
-               <span className="text-blue-400">I'm a </span>
-               <span className="text-green-400 border-r-2 border-green-400 animate-pulse">
-                 {currentText}
-               </span>
-               <span className="text-gray-500 mx-2">•</span>
-               <span className="text-cyan-400">Problem Solver</span>
+            {/* Typing Animation */}
+            <div className="mb-8 md:mb-10 h-8 flex items-center justify-center">
+              <span className="text-lg sm:text-xl md:text-2xl font-medium text-cyan-400">
+                {currentText}
+                <span 
+                  className={`inline-block w-0.5 h-6 ml-1 bg-cyan-400 ${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-75`}
+                  style={{ animation: isWaiting ? 'none' : undefined }}
+                />
+              </span>
+            </div>
+
+            {/* Tagline */}
+             <h2 className="text-base sm:text-lg md:text-xl text-gray-300 mb-8 md:mb-10 max-w-2xl leading-relaxed mx-auto">
+               I design and build full‑stack solutions that solve real problems — from scalable backends to performant, accessible UIs. Strong focus on product thinking, reliability, and pragmatic delivery.
              </h2>
 
              {/* Enhanced Description */}
-             <p className="text-base md:text-lg text-gray-400 mb-6 md:mb-8 max-w-2xl leading-relaxed">
-               I craft beautiful, responsive web applications using modern
-               technologies. Passionate about creating user-friendly experiences
-               that make a difference.
+             <p className="text-base md:text-lg text-gray-400 mb-8 md:mb-10 max-w-2xl leading-relaxed">
+               Currently focused on React + TypeScript frontends, Node/Express APIs, and pragmatic databases (Postgres/Firebase). I care about maintainability, DX, and shipping value.
              </p>
 
              {/* Skills Badges */}
-             <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-8 md:mb-12">
-               {['React', 'JavaScript', 'TypeScript', 'Node.js', 'Firebase', 'Tailwind CSS'].map((skill, index) => (
+             <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-10 md:mb-12">
+               {['React', 'TypeScript', 'Node.js', 'Express', 'Postgres', 'Firebase'].map((skill, index) => (
                  <span
                    key={skill}
-                   className="px-3 py-1 bg-gray-800/50 text-gray-300 rounded-full text-xs md:text-sm font-medium border border-gray-700 hover:border-blue-400 hover:text-blue-400 transition-all duration-300"
+                   className="px-3 py-1 bg-[#101826]/80 text-gray-200 rounded-full text-xs md:text-sm font-medium border border-white/5 hover:border-blue-400/60 hover:text-blue-300 transition-all duration-300"
                    style={{ animationDelay: `${index * 0.1}s` }}
                  >
                    {skill}
@@ -316,7 +460,7 @@ const Hero = () => {
              </div>
 
              {/* Enhanced CTA Buttons */}
-             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8 md:mb-12">
+             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10 md:mb-12">
                <button
                  onClick={() => scrollToSection("projects")}
                  className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 text-white rounded-xl font-semibold flex items-center justify-center space-x-2 group hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-105 relative overflow-hidden"
@@ -336,18 +480,10 @@ const Hero = () => {
                  Contact Me
                </button>
 
-               <a
-                 href="/path-to-your-cv.pdf"
-                 download
-                 className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 rounded-xl font-semibold border-2 border-green-400 text-green-400 hover:bg-green-400 hover:text-white hover:shadow-lg hover:shadow-green-400/25 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
-               >
-                 <Download size={18} />
-                 <span>Download CV</span>
-               </a>
-             </div>
+              </div>
 
-             {/* Enhanced Social Links */}
-             <div className="flex justify-center space-x-4 md:space-x-6">
+              {/* Enhanced Social Links */}
+              <div className="flex justify-center space-x-4 md:space-x-6">
                <a
                  href="https://github.com/GibsonWaheire"
                  target="_blank"
@@ -377,23 +513,69 @@ const Hero = () => {
                </a>
              </div>
 
-             {/* Stats Section */}
-             <div className="mt-8 md:mt-12 grid grid-cols-3 gap-4 md:gap-8 max-w-md mx-auto">
-               <div className="text-center">
-                 <div className="text-2xl md:text-3xl font-bold text-blue-400 mb-1">100+</div>
-                 <div className="text-xs md:text-sm text-gray-400">Projects</div>
-               </div>
-               <div className="text-center">
-                 <div className="text-2xl md:text-3xl font-bold text-purple-400 mb-1">2+</div>
-                 <div className="text-xs md:text-sm text-gray-400">Years</div>
-               </div>
-               <div className="text-center">
-                 <div className="text-2xl md:text-3xl font-bold text-cyan-400 mb-1">100%</div>
-                 <div className="text-xs md:text-sm text-gray-400">Satisfaction</div>
-               </div>
+
              </div>
            </div>
+
+
          </div>
+
+        {/* Profile Picture Card - Top Left */}
+        <div className="absolute top-8 left-4 lg:top-12 lg:left-8 z-20">
+          <div className="relative">
+            {/* Profile card background */}
+            <div className="absolute inset-0 bg-white/8 backdrop-blur-md rounded-2xl border border-white/15 shadow-xl -z-10" />
+            <div className="px-4 py-4 lg:px-6 lg:py-5 flex flex-col items-center">
+              <div className="relative group mb-3">
+                <div className="w-16 h-16 lg:w-20 lg:h-20 rounded-full overflow-hidden border-2 border-blue-400/50 shadow-lg group-hover:shadow-blue-500/30 transition-all duration-500">
+                  <img
+                    src={profileImage}
+                    alt="Gibson Waheire - Software Developer"
+                    className="w-full h-full object-cover object-left group-hover:scale-110 transition-transform duration-700"
+                  />
+                </div>
+                {/* Enhanced animated border glow */}
+                <div className="absolute inset-0 rounded-full border border-blue-400/40 animate-pulse"></div>
+                <div className="absolute inset-0 rounded-full border border-cyan-400/30 animate-ping" style={{ animationDelay: '1s' }}></div>
+                {/* Subtle background glow */}
+                <div className="absolute -inset-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+              
+              {/* Compact stats */}
+              <div className="flex gap-3 text-center">
+                <div>
+                  <div className="text-sm font-bold text-blue-400">100+</div>
+                  <div className="text-xs text-gray-400">Projects</div>
+                </div>
+                <div className="w-px h-8 bg-white/20"></div>
+                <div>
+                  <div className="text-sm font-bold text-purple-400">2+</div>
+                  <div className="text-xs text-gray-400">Years</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Content in Bottom-Right Cut-out Area */}
+        <div className="absolute bottom-4 right-4 lg:bottom-8 lg:right-8 z-30">
+          <div className="flex flex-col gap-2 lg:gap-3 max-w-[160px] lg:max-w-[180px] items-end">
+            {[
+              { icon: "⚡", text: "Fast Development", delay: "0s", color: "from-yellow-500/25 to-orange-500/25" },
+              { icon: "🎯", text: "Problem Focused", delay: "0.3s", color: "from-blue-500/25 to-cyan-500/25" },
+              { icon: "🚀", text: "Scalable Solutions", delay: "0.6s", color: "from-purple-500/25 to-pink-500/25" },
+            ].map((card, index) => (
+              <div
+                key={index}
+                className={`bg-gradient-to-r ${card.color} backdrop-blur-md border border-white/25 rounded-lg px-3 py-2 flex items-center gap-2 shadow-lg animate-[slideUp_0.8s_ease-out] hover:bg-white/20 hover:scale-105 hover:shadow-xl transition-all duration-300`}
+                style={{ animationDelay: card.delay }}
+              >
+                <span className="text-lg lg:text-xl filter drop-shadow-sm">{card.icon}</span>
+                <span className="text-white font-medium text-xs lg:text-sm">{card.text}</span>
+              </div>
+            ))}
+          </div>
+        </div>
 
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
