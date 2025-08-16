@@ -60,7 +60,7 @@ const Hero = () => {
         const Ctx = window.AudioContext || window.webkitAudioContext;
         const ctx = new Ctx();
         const gain = ctx.createGain();
-        gain.gain.value = 0.18;
+        gain.gain.value = 0.40;
         gain.connect(ctx.destination);
         setAudioCtx(ctx);
         setMasterGain(gain);
