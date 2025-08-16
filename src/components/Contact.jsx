@@ -55,24 +55,24 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-16 md:py-20 px-4 md:px-8 min-h-[90vh] bg-gradient-to-b from-[#131927] to-[#141733] border-y border-gray-800">
+    <section id="contact" className="py-16 md:py-20 px-4 md:px-8 min-h-[90vh] bg-gradient-to-b from-[#0c1526] to-[#0a1220] border-y border-gray-800/60">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-white">
-            Get In <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Touch</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
+            Get In <span className="bg-gradient-to-r from-sky-300 to-violet-300 bg-clip-text text-transparent">Touch</span>
           </h2>
-          <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-4 md:mb-6 text-sm md:text-base">
+          <p className="text-gray-400 max-w-3xl mx-auto mb-4 md:mb-6 text-sm md:text-base">
             I'm always open to discussing new opportunities, interesting projects, 
             or just having a friendly chat about technology.
           </p>
-          <div className="w-16 md:w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full"></div>
+          <div className="w-14 md:w-24 h-1 bg-gradient-to-r from-sky-400 to-violet-400 mx-auto rounded-full"></div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12">
           {/* Contact Information */}
           <div className="space-y-6 md:space-y-8">
-            <div className="bg-[#19213a] rounded-2xl p-5 md:p-7 shadow-lg">
-              <h3 className="text-xl md:text-2xl font-semibold mb-4 md:mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Let's Connect</h3>
+            <div className="bg-[#18223a] rounded-3xl p-6 md:p-8 shadow-lg border border-white/5">
+              <h3 className="text-lg md:text-2xl font-semibold mb-4 md:mb-6 bg-gradient-to-r from-sky-300 to-violet-300 bg-clip-text text-transparent">Let's Connect</h3>
               <p className="text-gray-300 mb-6 md:mb-8 leading-relaxed text-sm md:text-base">
                 Whether you have a project in mind, want to collaborate, or just want to say hello, 
                 I'd love to hear from you. Feel free to reach out through any of the channels below.
@@ -84,9 +84,9 @@ const Contact = () => {
                   return (
                     <div
                       key={info.label}
-                      className="flex items-center space-x-3 md:space-x-4 p-3 md:p-4 rounded-lg bg-[#212942] hover:bg-[#26315c] transition-all duration-300 group"
+                      className="flex items-center space-x-3 md:space-x-4 p-3 md:p-4 rounded-xl bg-[#1b2946] hover:bg-[#203255] transition-all duration-300 group border border-white/5"
                     >
-                      <div className="p-2 md:p-3 rounded-full bg-blue-500/10 text-blue-400 group-hover:bg-blue-500/20 transition-colors flex-shrink-0">
+                      <div className="p-2 md:p-3 rounded-full bg-sky-500/10 text-sky-400 group-hover:bg-sky-500/20 transition-colors flex-shrink-0">
                         <Icon size={18} className="md:w-5 md:h-5" />
                       </div>
                       <div className="flex-1 min-w-0">
@@ -96,7 +96,7 @@ const Contact = () => {
                             href={info.href}
                             target={info.href.startsWith('http') ? '_blank' : undefined}
                             rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                            className="text-gray-400 hover:text-blue-400 transition-colors text-sm md:text-base break-all"
+                            className="text-gray-400 hover:text-sky-400 transition-colors text-sm md:text-base break-all"
                           >
                             {info.value}
                           </a>
@@ -111,12 +111,12 @@ const Contact = () => {
             </div>
 
             {/* Quick Links */}
-            <div className="bg-[#19213a] rounded-2xl p-5 md:p-7 shadow-lg">
-              <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Quick Actions</h3>
+            <div className="bg-[#18223a] rounded-2xl p-6 md:p-8 shadow-lg border border-white/5">
+              <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4 bg-gradient-to-r from-sky-300 to-violet-300 bg-clip-text text-transparent">Quick Actions</h3>
               <div className="space-y-3">
                 <a
                   href="mailto:gibsonwaheire@gmail.com"
-                  className="block w-full p-3 text-center rounded-lg bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 border border-blue-500/20 transition-all duration-300 transform hover:scale-105 text-sm md:text-base"
+                  className="block w-full p-3 text-center rounded-lg bg-sky-500/10 hover:bg-sky-500/20 text-sky-400 border border-sky-500/20 transition-all duration-300 transform hover:scale-[1.02] text-sm md:text-base"
                 >
                   Send Email
                 </a>
@@ -124,7 +124,7 @@ const Contact = () => {
                   href="https://www.linkedin.com/in/gibson-w-giteru/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-full p-3 text-center rounded-lg bg-purple-500/10 hover:bg-purple-500/20 text-purple-400 border border-purple-500/20 transition-all duration-300 transform hover:scale-105 text-sm md:text-base"
+                  className="block w-full p-3 text-center rounded-lg bg-violet-500/10 hover:bg-violet-500/20 text-violet-400 border border-violet-500/20 transition-all duration-300 transform hover:scale-[1.02] text-sm md:text-base"
                 >
                   Connect on LinkedIn
                 </a>
@@ -133,9 +133,8 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-[#19213a] rounded-2xl p-5 md:p-7 shadow-lg">
-            <h3 className="text-xl md:text-2xl font-semibold mb-4 md:mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Send a Message</h3>
-            
+          <div className="bg-[#18223a] rounded-3xl p-6 md:p-8 shadow-lg border border-white/5">
+            <h3 className="text-lg md:text-2xl font-semibold mb-4 md:mb-6 bg-gradient-to-r from-sky-300 to-violet-300 bg-clip-text text-transparent">Send a Message</h3>
             {isSubmitted ? (
               <div className="text-center py-8 md:py-12">
                 <CheckCircle className="w-12 h-12 md:w-16 md:h-16 text-green-500 mx-auto mb-3 md:mb-4 animate-bounce" />
@@ -155,7 +154,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg bg-[#212942] border border-gray-700 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 transition-all duration-300 text-white placeholder-gray-400 text-sm md:text-base"
+                    className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg bg-[#1b2946] border border-gray-700 focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20 transition-all duration-300 text-white placeholder-gray-400 text-sm md:text-base"
                     placeholder="Your name"
                   />
                 </div>
@@ -171,7 +170,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg bg-[#212942] border border-gray-700 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 transition-all duration-300 text-white placeholder-gray-400 text-sm md:text-base"
+                    className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg bg-[#1b2946] border border-gray-700 focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20 transition-all duration-300 text-white placeholder-gray-400 text-sm md:text-base"
                     placeholder="your.email@example.com"
                   />
                 </div>
@@ -187,14 +186,14 @@ const Contact = () => {
                     onChange={handleInputChange}
                     required
                     rows={4}
-                    className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg bg-[#212942] border border-gray-700 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 transition-all duration-300 text-white placeholder-gray-400 resize-none text-sm md:text-base"
+                    className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg bg-[#1b2946] border border-gray-700 focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20 transition-all duration-300 text-white placeholder-gray-400 resize-none text-sm md:text-base"
                     placeholder="Tell me about your project or just say hello..."
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-blue-500 to-purple-500 px-4 md:px-6 py-2 md:py-3 rounded-xl font-semibold text-white shadow inline-flex items-center justify-center space-x-2 group hover:opacity-90 transition-all duration-300 text-sm md:text-base"
+                  className="w-full bg-gradient-to-r from-sky-500 to-violet-500 px-4 md:px-6 py-2 md:py-3 rounded-xl font-semibold text-white shadow inline-flex items-center justify-center space-x-2 group hover:opacity-90 transition-all duration-300 text-sm md:text-base"
                 >
                   <Send size={18} className="group-hover:translate-x-1 transition-transform" />
                   <span>Send Message</span>

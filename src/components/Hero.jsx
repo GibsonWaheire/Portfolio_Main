@@ -437,12 +437,12 @@ const Hero = () => {
             </div>
 
             {/* Tagline */}
-             <h2 className="text-base sm:text-lg md:text-xl text-gray-300 mb-8 md:mb-10 max-w-2xl leading-relaxed mx-auto">
+             <h2 className="text-gray-300 leading-relaxed mb-4 text-sm md:text-base">
                I design and build full‑stack solutions that solve real problems — from scalable backends to performant, accessible UIs. Strong focus on product thinking, reliability, and pragmatic delivery.
              </h2>
 
              {/* Enhanced Description */}
-             <p className="text-base md:text-lg text-gray-400 mb-8 md:mb-10 max-w-2xl leading-relaxed">
+             <p className="text-gray-400 leading-relaxed mb-8 md:mb-10 max-w-2xl text-sm md:text-base mx-auto text-center animate-[slideUp_0.7s_ease-out]">
                Currently focused on React + TypeScript frontends, Node/Express APIs, and pragmatic databases (Postgres/Firebase). I care about maintainability, DX, and shipping value.
              </p>
 

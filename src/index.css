@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Reusable body text utility */
+/* Removed to avoid @apply warning; using inline classes instead */
+
 /* Global background with layered gradients */
 html, body, #root {
   height: 100%;
