@@ -31,8 +31,8 @@ const Contact = () => {
     {
       icon: Mail,
       label: 'Email',
-      value: 'gibsonwaheire@gmail.com',
-      href: 'mailto:gibsonwaheire@gmail.com'
+      value: 'g.waheir00@gmail.com',
+      href: 'mailto:g.waheir00@gmail.com'
     },
     {
       icon: Linkedin,
@@ -115,7 +115,7 @@ const Contact = () => {
               <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4 bg-gradient-to-r from-sky-300 to-violet-300 bg-clip-text text-transparent">Quick Actions</h3>
               <div className="space-y-3">
                 <a
-                  href="mailto:gibsonwaheire@gmail.com"
+                  href="mailto:g.waheir00@gmail.com"
                   className="block w-full p-3 text-center rounded-lg bg-sky-500/10 hover:bg-sky-500/20 text-sky-400 border border-sky-500/20 transition-all duration-300 transform hover:scale-[1.02] text-sm md:text-base"
                 >
                   Send Email

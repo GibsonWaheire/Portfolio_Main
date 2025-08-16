@@ -132,7 +132,7 @@ Edit `src/data/projects.json` to add or modify projects:
 - **Portfolio**: [Live Demo](your-deployment-url)
 - **GitHub**: [@GibsonWaheire](https://github.com/GibsonWaheire)
 - **LinkedIn**: [Gibson Waheire](https://www.linkedin.com/in/gibson-w-giteru/)
-- **Email**: gibsonwaheire@gmail.com
+- **Email**: g.waheir00@gmail.com
 
 ## 📄 License
 

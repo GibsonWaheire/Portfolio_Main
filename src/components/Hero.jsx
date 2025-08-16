@@ -505,7 +505,7 @@ const Hero = () => {
                </a>
 
                <a
-                 href="mailto:gibsonwaheire@gmail.com"
+                 href="mailto:g.waheir00@gmail.com"
                  className="p-2 md:p-3 rounded-full bg-gray-800/50 hover:bg-cyan-500/20 text-gray-400 hover:text-cyan-400 transition-all duration-300 transform hover:scale-110 hover:rotate-12 hover:shadow-lg hover:shadow-cyan-500/25"
                  aria-label="Email"
                >
