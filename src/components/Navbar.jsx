@@ -1,5 +1,5 @@
 // src/components/Navbar.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
