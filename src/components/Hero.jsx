@@ -60,7 +60,7 @@ const Hero = () => {
         const Ctx = window.AudioContext || window.webkitAudioContext;
         const ctx = new Ctx();
         const gain = ctx.createGain();
-        gain.gain.value = 0.40;
+        gain.gain.value = 1.40;
         gain.connect(ctx.destination);
         setAudioCtx(ctx);
         setMasterGain(gain);
@@ -584,20 +584,7 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Floating Action Button */}
-        <div className="fixed bottom-6 right-6 z-50">
-          <div className="relative group">
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="w-14 h-14 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 flex items-center justify-center text-white"
-              aria-label="Quick Contact"
-            >
-              <Mail size={24} />
-            </button>
-            <div className="absolute -top-2 -right-2 w-4 h-4 bg-red-500 rounded-full animate-ping"></div>
-            <div className="absolute -top-2 -right-2 w-4 h-4 bg-red-500 rounded-full"></div>
-          </div>
-        </div>
+        
       </div>
     </section>
   );

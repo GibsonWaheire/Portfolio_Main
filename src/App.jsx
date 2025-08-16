@@ -7,6 +7,7 @@ import Footer from './components/Footer'
 import About from './components/About'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
+import WhatsAppChat from './components/WhatsAppChat'
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
@@ -37,6 +38,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      <WhatsAppChat />
     </>
   );
 }
