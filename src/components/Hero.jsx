@@ -443,7 +443,7 @@ const Hero = () => {
 
              {/* Enhanced Description */}
              <p className="text-gray-400 leading-relaxed mb-8 md:mb-10 max-w-2xl text-sm md:text-base mx-auto text-center animate-[slideUp_0.7s_ease-out]">
-               Currently focused on React + TypeScript frontends, Node/Express APIs, and pragmatic databases (Postgres/Firebase). I care about maintainability, DX, and shipping value.
+               Currently focused on React + TypeScript frontends, Node/Express APIs, and Python (including Django, Flask, and Query). I work with pragmatic databases like Postgres and Firebase. I care about maintainability, DX, and shipping value.
              </p>
 
              {/* Skills Badges */}
