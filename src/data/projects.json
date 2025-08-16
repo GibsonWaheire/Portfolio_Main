@@ -1,9 +1,10 @@
 [
   {
-    "title": "FundiMatch",
-    "description": "A Kenya-based app connecting users to fundis/contractors with Firebase Auth and Tailwind.",
-    "tech": ["React", "Firebase", "Tailwind"],
-    "github": "https://github.com/GibsonWaheire/Fundi_App"
+    "title": "LuxEstates Real Estate Site",
+    "description": "A modern real estate demo with advanced UI, multi-step forms, filtering, and responsive design.",
+    "tech": ["React", "TypeScript", "Tailwind", "Vite"],
+    "github": "https://github.com/GibsonWaheire/realEstate_website-",
+    "live": "https://realestate-site-demo.netlify.app/"
   },
   {
     "title": "ProtestWatch App",
