@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import { Github, ExternalLink } from 'lucide-react';
 import projectsData from '../data/projects.json';
 
@@ -18,7 +18,20 @@ const getTechColor = (tech) => {
   return colorMap[tech] || 'bg-blue-500/20 text-blue-400';
 };
 
+const tabs = [
+  { key: 'All', label: 'All' },
+  { key: 'Frontend', label: 'Frontend' },
+  { key: 'Full-Stack', label: 'Full‑stack' }
+];
+
 const Projects = () => {
+  const [activeTab, setActiveTab] = useState('All');
+
+  const filteredProjects = useMemo(() => {
+    if (activeTab === 'All') return projectsData;
+    return projectsData.filter(p => p.category === activeTab);
+  }, [activeTab]);
+
   return (
     <section id="projects" className="py-16 md:py-20 px-4 md:px-8 min-h-[90vh] bg-gradient-to-b from-[#131927] to-[#141733] border-y border-gray-800">
       <div className="max-w-7xl mx-auto">
@@ -33,9 +46,27 @@ const Projects = () => {
           </p>
         </div>
 
+        {/* Filter Tabs */}
+        <div className="flex justify-center gap-2 md:gap-3 mb-6 md:mb-10">
+          {tabs.map(tab => (
+            <button
+              key={tab.key}
+              onClick={() => setActiveTab(tab.key)}
+              className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium border transition-all ${
+                activeTab === tab.key
+                  ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white border-transparent'
+                  : 'border-gray-700 text-gray-300 hover:border-blue-500/60'
+              }`}
+              aria-pressed={activeTab === tab.key}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
         {/* Project Cards */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16">
-          {projectsData.map((project, index) => (
+          {filteredProjects.map((project, index) => (
             <div key={index} className="bg-[#19213a] rounded-2xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
               <div className="flex justify-between items-start mb-3 md:mb-4">
                 <h3 className="text-lg md:text-xl font-bold text-white">{project.title}</h3>
@@ -64,7 +95,7 @@ const Projects = () => {
                 {project.description}
               </p>
               <div className="flex flex-wrap gap-1 md:gap-2">
-                {project.tech.map((tech, techIndex) => (
+                {project.tech.slice(0, 4).map((tech, techIndex) => (
                   <span
                     key={techIndex}
                     className={`px-2 md:px-3 py-1 text-xs rounded-full font-medium ${getTechColor(tech)}`}
@@ -72,6 +103,9 @@ const Projects = () => {
                     {tech}
                   </span>
                 ))}
+                {project.tech.length > 4 && (
+                  <span className="px-2 md:px-3 py-1 text-xs rounded-full font-medium bg-gray-500/20 text-gray-300">+{project.tech.length - 4} more</span>
+                )}
               </div>
             </div>
           ))}

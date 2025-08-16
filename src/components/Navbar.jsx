@@ -11,6 +11,7 @@ const navLinks = [
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeId, setActiveId] = useState('home');
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -20,8 +21,29 @@ export default function Navbar() {
     setIsMenuOpen(false); // Close mobile menu after navigation
   };
 
+  useEffect(() => {
+    const sections = ['home', 'about', 'projects', 'contact'];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveId(entry.target.id);
+          }
+        });
+      },
+      { root: null, rootMargin: '0px', threshold: 0.5 }
+    );
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <nav className="fixed top-0 left-0 w-full z-20 bg-[#101627]/95 backdrop-blur-md">
+    <nav className="fixed top-0 left-0 w-full z-20 bg-[#101627]/70 backdrop-blur-md">
       <div className="mx-auto max-w-7xl flex items-center justify-between h-16 md:h-20 px-4 md:px-8">
         {/* Brand */}
         <span className="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
@@ -38,7 +60,7 @@ export default function Navbar() {
                 e.preventDefault();
                 scrollToSection(link.href.substring(1));
               }}
-              className="px-4 md:px-5 py-2 rounded-2xl transition text-gray-300 hover:bg-[#1c243a] hover:text-blue-300"
+              className={`px-4 md:px-5 py-2 rounded-2xl transition text-gray-300 hover:bg-[#1c243a] hover:text-blue-300 ${activeId === link.href.substring(1) ? 'bg-[#1c243a] text-blue-300' : ''}`}
             >
               {link.name}
             </a>

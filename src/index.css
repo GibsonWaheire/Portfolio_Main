@@ -1,5 +1,31 @@
 @import "tailwindcss";
 
+/* Global background with layered gradients */
+html, body, #root {
+  height: 100%;
+}
+body {
+  background:
+    radial-gradient(80% 60% at 50% 0%, rgba(59,130,246,0.18), rgba(0,0,0,0) 60%),
+    linear-gradient(180deg, #0b1220 0%, #0e1424 100%);
+  color: #e5e7eb;
+}
+
+/* Accessible skip link */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 8px;
+  background: #111827;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  z-index: 9999;
+}
+.skip-link:focus {
+  left: 8px;
+}
+
 /* Mobile-specific optimizations */
 @media (max-width: 768px) {
   /* Ensure proper touch targets */
