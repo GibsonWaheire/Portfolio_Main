@@ -143,10 +143,10 @@ const Hero = () => {
   useEffect(() => {
     if (isWaiting) return;
 
-    const currentWord = texts[currentIndex];
+      const currentWord = texts[currentIndex];
     let delay;
-
-    if (isDeleting) {
+      
+      if (isDeleting) {
       // Faster deletion, slight randomness
       delay = 40 + Math.random() * 30;
       
@@ -159,12 +159,12 @@ const Hero = () => {
           setIsWaiting(true);
           // Brief pause before starting next word
           setTimeout(() => {
-            setCurrentIndex((prev) => (prev + 1) % texts.length);
+          setCurrentIndex((prev) => (prev + 1) % texts.length);
             setIsWaiting(false);
           }, 300);
         }
       }, delay);
-    } else {
+      } else {
       // Variable typing speed - slower for punctuation, faster for letters
       const nextChar = currentWord[currentText.length];
       const isPunctuation = /[.,!?;:]/.test(nextChar);
@@ -412,7 +412,7 @@ const Hero = () => {
                <p className="text-base md:text-lg text-blue-400 mb-3 font-medium tracking-wide">
                  Hi there! I'm
                </p>
-               <div className="w-12 md:w-16 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mx-auto"></div>
+                                <div className="w-12 md:w-16 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mx-auto"></div>
              </div>
 
              {/* Name & Title */}
@@ -428,12 +428,12 @@ const Hero = () => {
             {/* Typing Animation */}
             <div className="mb-8 md:mb-10 h-8 flex items-center justify-center">
               <span className="text-lg sm:text-xl md:text-2xl font-medium text-cyan-400">
-                {currentText}
+                 {currentText}
                 <span 
                   className={`inline-block w-0.5 h-6 ml-1 bg-cyan-400 ${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-75`}
                   style={{ animation: isWaiting ? 'none' : undefined }}
                 />
-              </span>
+               </span>
             </div>
 
             {/* Tagline */}
@@ -480,10 +480,10 @@ const Hero = () => {
                  Contact Me
                </button>
 
-              </div>
+             </div>
 
-              {/* Enhanced Social Links */}
-              <div className="flex justify-center space-x-4 md:space-x-6">
+             {/* Enhanced Social Links */}
+             <div className="flex justify-center space-x-4 md:space-x-6">
                <a
                  href="https://github.com/GibsonWaheire"
                  target="_blank"
@@ -574,8 +574,8 @@ const Hero = () => {
                 <span className="text-white font-medium text-xs lg:text-sm">{card.text}</span>
               </div>
             ))}
-          </div>
-        </div>
+           </div>
+         </div>
 
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
