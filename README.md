@@ -13,11 +13,14 @@ A modern, responsive portfolio website showcasing my skills as a Software Develo
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React 19, Vite
-- **Styling**: Tailwind CSS
+- **Frontend**: React 19, Vite, TypeScript, Tailwind CSS
+- **Backend**: Node.js, Express, Python, Django, Flask
+- **Database**: Firebase, PostgreSQL
+- **Authentication**: JWT, OAuth
+- **Deployment**: Vercel, Netlify, GitHub Pages
+- **Version Control**: Git
 - **Icons**: Lucide React
 - **Animations**: CSS transitions and Tailwind animations
-- **Deployment**: Ready for Vercel, Netlify, or GitHub Pages
 
 ## 📁 Project Structure
 
@@ -52,7 +55,8 @@ src/
 - Statistics and achievements
 
 ### Projects Section
-- Dynamic project cards
+- Dynamic project cards with technology tags
+- Featured projects including ChatOps workflow automation
 - Technology tags with color coding
 - GitHub and live demo links
 - Call-to-action for more projects
@@ -112,10 +116,19 @@ Edit `src/data/projects.json` to add or modify projects:
   "title": "Project Name",
   "description": "Project description",
   "tech": ["React", "Node.js", "MongoDB"],
+  "category": "Full-Stack",
   "github": "https://github.com/username/project",
   "live": "https://project-demo.com"
 }
 ```
+
+### Featured Projects
+- **ChatOps**: Chat-based workflow automation SaaS with business templates
+- **LuxEstates**: Modern real estate demo with advanced UI
+- **ProtestWatch**: Full-stack protest monitoring tool
+- **Smart Saving App**: Financial goal tracking application
+- **KidsPlay**: Interactive learning platform for children
+- **E-commerce Mockup**: Kids' fashion e-commerce with smart features
 
 ### Updating Profile
 - Replace profile image in `src/assets/`

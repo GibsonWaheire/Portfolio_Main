@@ -6,14 +6,23 @@ import projectsData from '../data/projects.json';
 const getTechColor = (tech) => {
   const colorMap = {
     'React': 'bg-blue-500/20 text-blue-400',
+    'TypeScript': 'bg-blue-600/20 text-blue-300',
     'JavaScript': 'bg-yellow-500/20 text-yellow-400',
+    'Python': 'bg-green-500/20 text-green-400',
+    'Django': 'bg-green-600/20 text-green-300',
+    'Flask': 'bg-gray-500/20 text-gray-300',
+    'Node.js': 'bg-green-500/20 text-green-400',
+    'Node': 'bg-green-500/20 text-green-400',
+    'Express': 'bg-green-500/20 text-green-400',
     'Firebase': 'bg-orange-500/20 text-orange-400',
     'Tailwind': 'bg-cyan-500/20 text-cyan-400',
-    'Express': 'bg-green-500/20 text-green-400',
+    'Tailwind CSS': 'bg-cyan-500/20 text-cyan-400',
+    'PostgreSQL': 'bg-indigo-500/20 text-indigo-400',
     'Postgres': 'bg-indigo-500/20 text-indigo-400',
     'HTML': 'bg-red-500/20 text-red-400',
     'CSS': 'bg-pink-500/20 text-pink-400',
-    'Vite': 'bg-purple-500/20 text-purple-400'
+    'Vite': 'bg-purple-500/20 text-purple-400',
+    'JWT': 'bg-red-600/20 text-red-300'
   };
   return colorMap[tech] || 'bg-blue-500/20 text-blue-400';
 };
@@ -67,15 +76,25 @@ const Projects = () => {
         {/* Project Cards */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16">
           {filteredProjects.map((project, index) => (
-            <div key={index} className="bg-[#19213a]/95 rounded-[20px] md:rounded-3xl p-5 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] border border-white/5">
+            <div 
+              key={index} 
+              className="bg-[#19213a]/95 rounded-[20px] md:rounded-3xl p-5 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] border border-white/5 cursor-pointer group"
+              onClick={() => {
+                if (project.live) {
+                  window.open(project.live, '_blank', 'noopener,noreferrer');
+                }
+              }}
+            >
               <div className="flex justify-between items-start mb-3 md:mb-4">
-                <h3 className="text-lg md:text-xl font-bold text-white">{project.title}</h3>
+                <h3 className="text-lg md:text-xl font-bold text-white group-hover:text-blue-300 transition-colors">{project.title}</h3>
                 <div className="flex gap-2">
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-violet-400 transition-colors p-1"
+                    className="text-gray-400 hover:text-violet-400 transition-colors p-1 rounded hover:bg-gray-700/50"
+                    onClick={(e) => e.stopPropagation()}
+                    aria-label="GitHub"
                   >
                     <Github size={16} />
                   </a>
@@ -84,14 +103,16 @@ const Projects = () => {
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-400 hover:text-violet-400 transition-colors p-1"
+                      className="text-gray-400 hover:text-green-400 transition-colors p-1 rounded hover:bg-gray-700/50"
+                      onClick={(e) => e.stopPropagation()}
+                      aria-label="Live Demo"
                     >
                       <ExternalLink size={16} />
                     </a>
                   )}
                 </div>
               </div>
-              <p className="text-gray-400 mb-3 md:mb-4 text-xs md:text-sm leading-relaxed">
+              <p className="text-gray-400 mb-3 md:mb-4 text-xs md:text-sm leading-relaxed group-hover:text-gray-300 transition-colors">
                 {project.description}
               </p>
               <div className="flex flex-wrap gap-1.5 md:gap-2">

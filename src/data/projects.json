@@ -16,12 +16,12 @@
     "live": "https://protest-watch-app.vercel.app/"
   },
   {
-    "title": "What-To-Eat Web App",
-    "description": "Kenyan meal quiz suggestion app with localStorage persistence.",
-    "tech": ["HTML", "CSS", "JavaScript"],
-    "category": "Frontend",
-    "github": "https://github.com/GibsonWaheire/what-to-eat-web-app",
-    "live": "https://gibsonwaheire.github.io/what-to-eat-web-app/"
+    "title": "ChatOps - Chat-Based Workflow Automation",
+    "description": "A lightweight SaaS that replaces complex dashboards with natural chat. Features business templates, multi-channel messaging, smart document generation, and complete authentication system.",
+    "tech": ["React", "TypeScript", "Tailwind CSS", "Vite", "Node.js", "JWT"],
+    "category": "Full-Stack",
+    "github": "https://github.com/GibsonWaheire/niched_chat_ops",
+    "live": "https://niched-chat-ops.vercel.app/"
   },
   {
     "title": "Smart Saving App",

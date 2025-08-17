@@ -1,33 +1,65 @@
-import { Github } from 'lucide-react';
+import { Github, ExternalLink } from 'lucide-react';
 
 const techColor = {
   React: 'bg-blue-900 text-blue-300',
+  TypeScript: 'bg-blue-800 text-blue-200',
+  JavaScript: 'bg-yellow-900 text-yellow-400',
+  Python: 'bg-green-800 text-green-300',
+  Django: 'bg-green-900 text-green-200',
+  Flask: 'bg-gray-700 text-gray-200',
+  Node: 'bg-green-700 text-green-200',
+  'Node.js': 'bg-green-700 text-green-200',
+  Express: 'bg-gray-800 text-gray-300',
   Firebase: 'bg-yellow-900 text-yellow-400',
   Tailwind: 'bg-cyan-900 text-cyan-400',
-  Express: 'bg-gray-800 text-gray-300',
+  'Tailwind CSS': 'bg-cyan-900 text-cyan-400',
+  PostgreSQL: 'bg-indigo-900 text-indigo-400',
   Postgres: 'bg-indigo-900 text-indigo-400',
   HTML: 'bg-blue-800 text-blue-300',
   CSS: 'bg-sky-900 text-sky-300',
-  JavaScript: 'bg-yellow-900 text-yellow-400',
+  Vite: 'bg-purple-800 text-purple-300',
+  JWT: 'bg-red-800 text-red-300',
   // add more as needed
 };
 
 const ProjectCard = ({ project }) => {
   return (
-    <div className="bg-[#19213a]/80 rounded-2xl p-6 shadow-md flex flex-col min-h-[220px] transition-all hover:scale-[1.025] hover:shadow-lg duration-200">
+    <div 
+      className="bg-[#19213a]/80 rounded-2xl p-6 shadow-md flex flex-col min-h-[220px] transition-all hover:scale-[1.025] hover:shadow-lg duration-200 cursor-pointer group"
+      onClick={() => {
+        if (project.live) {
+          window.open(project.live, '_blank', 'noopener,noreferrer');
+        }
+      }}
+    >
       <div className="flex items-center justify-between mb-2">
-        <h3 className="text-lg font-semibold text-white">{project.title}</h3>
-        <a
-          href={project.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-gray-400 hover:text-blue-400 transition"
-          aria-label="GitHub"
-        >
-          <Github size={18} />
-        </a>
+        <h3 className="text-lg font-semibold text-white group-hover:text-blue-300 transition-colors">{project.title}</h3>
+        <div className="flex gap-2">
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-400 hover:text-blue-400 transition p-1 rounded hover:bg-gray-700/50"
+            onClick={(e) => e.stopPropagation()}
+            aria-label="GitHub"
+          >
+            <Github size={18} />
+          </a>
+          {project.live && (
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-green-400 transition p-1 rounded hover:bg-gray-700/50"
+              onClick={(e) => e.stopPropagation()}
+              aria-label="Live Demo"
+            >
+              <ExternalLink size={18} />
+            </a>
+          )}
+        </div>
       </div>
-      <p className="text-gray-400 mb-4 text-[15px]">{project.description}</p>
+      <p className="text-gray-400 mb-4 text-[15px] group-hover:text-gray-300 transition-colors">{project.description}</p>
       <div className="flex flex-wrap gap-2 mt-auto">
         {project.tech.map((tech) => (
           <span

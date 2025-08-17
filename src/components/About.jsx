@@ -1,13 +1,21 @@
-import { Code, Database, Globe, Zap, Palette, Server } from 'lucide-react';
+import { Code, Database, Globe, Zap, Palette, Server, Cpu, Cloud, FileCode, GitBranch } from 'lucide-react';
 
 const About = () => {
   const techStack = [
     { name: 'React', icon: Code, color: 'text-blue-400' },
     { name: 'JavaScript', icon: Zap, color: 'text-yellow-400' },
+    { name: 'TypeScript', icon: Code, color: 'text-blue-500' },
+    { name: 'Python', icon: FileCode, color: 'text-green-400' },
+    { name: 'Django', icon: Database, color: 'text-green-600' },
+    { name: 'Flask', icon: Database, color: 'text-gray-400' },
+    { name: 'Node.js', icon: Server, color: 'text-green-500' },
+    { name: 'Express', icon: Server, color: 'text-gray-300' },
     { name: 'Firebase', icon: Database, color: 'text-orange-400' },
+    { name: 'PostgreSQL', icon: Database, color: 'text-indigo-400' },
     { name: 'Tailwind CSS', icon: Palette, color: 'text-cyan-400' },
     { name: 'Vite', icon: Globe, color: 'text-purple-400' },
-    { name: 'Node.js', icon: Server, color: 'text-green-400' },
+    { name: 'Git', icon: GitBranch, color: 'text-orange-500' },
+    { name: 'Vercel', icon: Cloud, color: 'text-black' },
   ];
 
   return (
@@ -58,17 +66,17 @@ const About = () => {
           <div className="space-y-6 md:space-y-8">
             <div className="bg-[#18223a] rounded-3xl p-6 md:p-8 shadow-lg border border-white/5">
               <h3 className="text-lg md:text-2xl font-semibold mb-4 md:mb-6 bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">Tech Stack</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
                 {techStack.map((tech, index) => {
                   const Icon = tech.icon;
                   return (
                     <div
                       key={tech.name}
-                      className="flex items-center space-x-3 p-3 md:p-4 rounded-lg bg-[#1b2946] hover:bg-[#1f3156] transition-all duration-300 transform hover:scale-[1.02] group border border-white/5"
+                      className="flex items-center space-x-3 p-2.5 md:p-3 rounded-lg bg-[#1b2946] hover:bg-[#1f3156] transition-all duration-300 transform hover:scale-[1.02] group border border-white/5"
                       style={{ animationDelay: `${index * 0.1}s` }}
                     >
-                      <Icon className={`w-6 h-6 md:w-8 md:h-8 ${tech.color} group-hover:animate-bounce`} />
-                      <span className="font-medium text-gray-200 text-sm md:text-base">{tech.name}</span>
+                      <Icon className={`w-5 h-5 md:w-6 md:h-6 ${tech.color} group-hover:animate-bounce`} />
+                      <span className="font-medium text-gray-200 text-xs md:text-sm">{tech.name}</span>
                     </div>
                   );
                 })}

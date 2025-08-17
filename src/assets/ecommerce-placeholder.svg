@@ -1,0 +1,10 @@
+<svg width="400" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="200" fill="#1f2937"/>
+  <rect x="80" y="50" width="80" height="100" fill="#374151" rx="4"/>
+  <rect x="180" y="50" width="80" height="100" fill="#374151" rx="4"/>
+  <rect x="280" y="50" width="80" height="100" fill="#374151" rx="4"/>
+  <rect x="90" y="60" width="60" height="60" fill="#6b7280" rx="2"/>
+  <rect x="190" y="60" width="60" height="60" fill="#6b7280" rx="2"/>
+  <rect x="290" y="60" width="60" height="60" fill="#6b7280" rx="2"/>
+  <text x="200" y="180" text-anchor="middle" fill="#9ca3af" font-family="Arial" font-size="14">E-commerce</text>
+</svg>

@@ -22,7 +22,9 @@ function App() {
       <div className="app-loader">
         <div className="loader-content">
           <div className="spinner" />
-          <div className="loader-text">Loading portfolio…</div>
+          <div className="loader-text">
+            <span className="wave-hand">👋</span> Hi! Loading portfolio…
+          </div>
         </div>
       </div>
     )
