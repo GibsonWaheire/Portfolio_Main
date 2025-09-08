@@ -8,12 +8,12 @@
     "live": "https://realestate-site-demo.netlify.app/"
   },
   {
-    "title": "ProtestWatch App",
-    "description": "A full-stack protest monitoring tool built with React, Express, and PostgreSQL.",
-    "tech": ["React", "Express", "Postgres"],
+    "title": "Connect Order Grow",
+    "description": "A comprehensive platform for connecting businesses with growth opportunities through streamlined ordering and management systems.",
+    "tech": ["React", "TypeScript", "Tailwind CSS", "Vite", "Node.js"],
     "category": "Full-Stack",
-    "github": "https://github.com/GibsonWaheire/protestwatch",
-    "live": "https://protest-watch-app.vercel.app/"
+    "github": "https://github.com/GibsonWaheire/connect-grow",
+    "live": "https://connect-order-grow.vercel.app/"
   },
   {
     "title": "ChatOps - Chat-Based Workflow Automation",
@@ -24,12 +24,12 @@
     "live": "https://niched-chat-ops.vercel.app/"
   },
   {
-    "title": "Smart Saving App",
-    "description": "A modern web app for managing and tracking your financial saving goals.",
-    "tech": ["React", "Vite", "Firebase"],
-    "category": "Frontend",
-    "github": "https://github.com/GibsonWaheire/smart-saving-app",
-    "live": "https://smart-plan-ke.netlify.app/"
+    "title": "Domestic Connect",
+    "description": "Kenya's premier platform connecting families with trusted domestic workers and professional agencies. Features verification system, secure payments, and comprehensive hiring solutions.",
+    "tech": ["React", "TypeScript", "Tailwind CSS", "Vite", "Node.js"],
+    "category": "Full-Stack",
+    "github": "https://github.com/GibsonWaheire/Domestic_Connect",
+    "live": "https://domestic-connect.vercel.app/"
   },
   {
     "title": "KidsPlay",
