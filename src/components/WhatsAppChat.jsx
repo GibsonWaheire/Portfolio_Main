@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { MessageCircle, X, Send } from 'lucide-react';
 
 // Update this to your WhatsApp number; '+' or spaces are okay, we'll sanitize
-const WHATSAPP_NUMBER = '+1 (563) 657-8107';
+const WHATSAPP_NUMBER = '+1 (443) 869-7500';
 
 const quickReplies = [
 	"Hi Gibson, I'm interested in your portfolio!",
