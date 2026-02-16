@@ -13,7 +13,7 @@
     "tech": ["React", "TypeScript", "Tailwind CSS", "Vite", "Node.js"],
     "category": "Full-Stack",
     "github": "https://github.com/GibsonWaheire/connect-grow",
-    "live": "https://connect-order-grow.vercel.app/"
+    "live": "https://mcgibsdigitalsolutions.com/"
   },
   {
     "title": "ChatOps - Chat-Based Workflow Automation",
@@ -32,12 +32,12 @@
     "live": "https://domestic-connect.vercel.app/"
   },
   {
-    "title": "KidsPlay",
-    "description": "Interactive kids learning and play activities web app.",
-    "tech": ["React", "Vite", "Tailwind"],
-    "category": "Frontend",
-    "github": "https://github.com/GibsonWaheire",
-    "live": "https://kidsplay-omega.vercel.app/"
+    "title": "Salonyst",
+    "description": "Point-of-sale and management system for salons. Handles sales, staff, services, inventory, expenses, commission payments, and financial reports.",
+    "tech": ["React", "Vite", "Tailwind CSS", "Flask", "SQLAlchemy"],
+    "category": "Full-Stack",
+    "github": "https://github.com/GibsonWaheire/POS_salon-",
+    "live": "https://pos-salon.vercel.app/"
   },
   {
     "title": "E-commerce Mockup (T-Tots Mtumba)",
