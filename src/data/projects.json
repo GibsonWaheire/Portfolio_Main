@@ -46,5 +46,20 @@
     "category": "Frontend",
     "github": "https://github.com/GibsonWaheire/e-commerce-mockup",
     "live": "https://e-commerce-mockup.vercel.app/"
+  },
+  {
+    "title": "DealKe - Kenyan Business Solutions",
+    "description": "Kenyan business solutions platform offering websites, KRA filings, government services, IT & POS solutions. Features M-Pesa Daraja STK push payment integration for seamless local payments.",
+    "tech": ["React", "Vite", "Tailwind CSS", "Node.js", "Express"],
+    "category": "Full-Stack",
+    "github": "https://github.com/GibsonWaheire/DealKe",
+    "live": "https://deal-ke.vercel.app"
+  },
+  {
+    "title": "Peter SEO Consultants",
+    "description": "Full-stack web platform for an SEO and digital marketing consultancy. Built with a client-server architecture to manage services, client inquiries, and consultancy offerings.",
+    "tech": ["React", "Node.js", "Express", "JavaScript"],
+    "category": "Full-Stack",
+    "github": "https://github.com/GibsonWaheire/peter_Seo_Consultants"
   }
 ] 
