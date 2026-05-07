@@ -2,10 +2,10 @@
   {
     "title": "Domestic Connect",
     "description": "Kenya's premier platform connecting families with trusted domestic workers and professional agencies. Features verification system, secure payments, and comprehensive hiring solutions.",
-    "tech": ["React", "TypeScript", "Tailwind CSS", "Vite", "Node.js"],
+    "tech": ["React", "TypeScript", "Tailwind CSS", "Flask", "Firebase"],
     "category": "Full-Stack",
     "github": "https://github.com/GibsonWaheire/Domestic_Connect",
-    "live": "https://domestic-connect.vercel.app/"
+    "live": "https://domestic-connect.co.ke/"
   },
   {
     "title": "Connect Order Grow",
