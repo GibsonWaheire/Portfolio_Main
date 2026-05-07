@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { Github, ExternalLink } from 'lucide-react';
+import { Github, ExternalLink, ChevronDown, ChevronUp } from 'lucide-react';
 import projectsData from '../data/projects.json';
 
 // Tech color mapping
@@ -33,13 +33,19 @@ const tabs = [
   { key: 'Frontend', label: 'Frontend' }
 ];
 
+const INITIAL_COUNT = 5;
+
 const Projects = () => {
   const [activeTab, setActiveTab] = useState('All');
+  const [showAll, setShowAll] = useState(false);
 
   const filteredProjects = useMemo(() => {
     if (activeTab === 'All') return projectsData;
     return projectsData.filter(p => p.category === activeTab);
   }, [activeTab]);
+
+  const visibleProjects = showAll ? filteredProjects : filteredProjects.slice(0, INITIAL_COUNT);
+  const hasMore = filteredProjects.length > INITIAL_COUNT;
 
   return (
     <section id="projects" className="py-16 md:py-20 px-4 md:px-8 min-h-[90vh] bg-gradient-to-b from-[#0f1a2e] to-[#0c1526] border-y border-gray-800/70">
@@ -74,8 +80,8 @@ const Projects = () => {
         </div>
 
         {/* Project Cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16">
-          {filteredProjects.map((project, index) => (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-10">
+          {visibleProjects.map((project, index) => (
             <div 
               key={index} 
               className="bg-[#19213a]/95 rounded-[20px] md:rounded-3xl p-5 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] border border-white/5 cursor-pointer group"
@@ -131,6 +137,22 @@ const Projects = () => {
             </div>
           ))}
         </div>
+
+        {/* Show More / Less */}
+        {hasMore && (
+          <div className="flex justify-center mb-10 md:mb-14">
+            <button
+              onClick={() => setShowAll(prev => !prev)}
+              className="flex items-center gap-2 px-6 py-2.5 rounded-full border border-violet-500/50 text-violet-300 text-sm font-semibold hover:bg-violet-500/10 transition-all"
+            >
+              {showAll ? (
+                <><ChevronUp size={16} /> Show Less</>
+              ) : (
+                <><ChevronDown size={16} /> Show More Projects</>
+              )}
+            </button>
+          </div>
+        )}
 
         {/* CTA Section */}
         <div className="text-center">

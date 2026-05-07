@@ -1,11 +1,11 @@
 [
   {
-    "title": "LuxEstates Real Estate Site",
-    "description": "A modern real estate demo with advanced UI, multi-step forms, filtering, and responsive design.",
-    "tech": ["React", "TypeScript", "Tailwind", "Vite"],
-    "category": "Frontend",
-    "github": "https://github.com/GibsonWaheire/realEstate_website-",
-    "live": "https://realestate-site-demo.netlify.app/"
+    "title": "Domestic Connect",
+    "description": "Kenya's premier platform connecting families with trusted domestic workers and professional agencies. Features verification system, secure payments, and comprehensive hiring solutions.",
+    "tech": ["React", "TypeScript", "Tailwind CSS", "Vite", "Node.js"],
+    "category": "Full-Stack",
+    "github": "https://github.com/GibsonWaheire/Domestic_Connect",
+    "live": "https://domestic-connect.vercel.app/"
   },
   {
     "title": "Connect Order Grow",
@@ -16,36 +16,12 @@
     "live": "https://mcgibsdigitalsolutions.com/"
   },
   {
-    "title": "ChatOps - Chat-Based Workflow Automation",
-    "description": "A lightweight SaaS that replaces complex dashboards with natural chat. Features business templates, multi-channel messaging, smart document generation, and complete authentication system.",
-    "tech": ["React", "TypeScript", "Tailwind CSS", "Vite", "Node.js", "JWT"],
-    "category": "Full-Stack",
-    "github": "https://github.com/GibsonWaheire/niched_chat_ops",
-    "live": "https://niched-chat-ops.vercel.app/"
-  },
-  {
-    "title": "Domestic Connect",
-    "description": "Kenya's premier platform connecting families with trusted domestic workers and professional agencies. Features verification system, secure payments, and comprehensive hiring solutions.",
-    "tech": ["React", "TypeScript", "Tailwind CSS", "Vite", "Node.js"],
-    "category": "Full-Stack",
-    "github": "https://github.com/GibsonWaheire/Domestic_Connect",
-    "live": "https://domestic-connect.vercel.app/"
-  },
-  {
     "title": "Salonyst",
     "description": "Point-of-sale and management system for salons. Handles sales, staff, services, inventory, expenses, commission payments, and financial reports.",
     "tech": ["React", "Vite", "Tailwind CSS", "Flask", "SQLAlchemy"],
     "category": "Full-Stack",
     "github": "https://github.com/GibsonWaheire/POS_salon-",
     "live": "https://pos-salon.vercel.app/"
-  },
-  {
-    "title": "E-commerce Mockup (T-Tots Mtumba)",
-    "description": "Modern, responsive kids' fashion e-commerce with smart cart, filtering, and WhatsApp support.",
-    "tech": ["React", "Tailwind", "Vite"],
-    "category": "Frontend",
-    "github": "https://github.com/GibsonWaheire/e-commerce-mockup",
-    "live": "https://e-commerce-mockup.vercel.app/"
   },
   {
     "title": "DealKe - Kenyan Business Solutions",
@@ -61,6 +37,31 @@
     "tech": ["React", "Node.js", "Express", "JavaScript"],
     "category": "Full-Stack",
     "github": "https://github.com/GibsonWaheire/peter_Seo_Consultants"
+  },
+  {
+    "title": "ChatOps - Chat-Based Workflow Automation",
+    "description": "A lightweight SaaS that replaces complex dashboards with natural chat. Features business templates, multi-channel messaging, smart document generation, and complete authentication system.",
+    "tech": ["React", "TypeScript", "Tailwind CSS", "Vite", "Node.js", "JWT"],
+    "category": "Full-Stack",
+    "github": "https://github.com/GibsonWaheire/niched_chat_ops",
+    "live": "https://niched-chat-ops.vercel.app/"
+  },
+  {
+    "title": "LuxEstates Real Estate Site",
+    "description": "A modern real estate demo with advanced UI, multi-step forms, filtering, and responsive design.",
+    "tech": ["React", "TypeScript", "Tailwind", "Vite"],
+    "category": "Frontend",
+    "github": "https://github.com/GibsonWaheire/realEstate_website-",
+    "live": "https://realestate-site-demo.netlify.app/"
+  },
+  {
+    "title": "E-commerce Mockup (T-Tots Mtumba)",
+    "description": "Modern, responsive kids' fashion e-commerce with smart cart, filtering, and WhatsApp support.",
+    "tech": ["React", "Tailwind", "Vite"],
+    "category": "Frontend",
+    "github": "https://github.com/GibsonWaheire/e-commerce-mockup",
+    "live": "https://e-commerce-mockup.vercel.app/"
   }
 ]
+
  
